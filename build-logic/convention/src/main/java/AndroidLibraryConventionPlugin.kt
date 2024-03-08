@@ -38,6 +38,9 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
+                add("implementation", libs.findLibrary("androidx.lifecycle.viewModel").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.savedState").get())
+
                 add("androidTestImplementation", kotlin("test"))
                 add("testImplementation", kotlin("test"))
             }
