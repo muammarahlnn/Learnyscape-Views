@@ -37,6 +37,7 @@ org-jetbrains-kotlin-android = "1.9.22"
 junit = "1.1.5"
 material = "1.11.0"
 constraintlayout = "2.1.4"
+espresso-core = "3.5.1"
 
 [libraries]
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
@@ -78,6 +79,7 @@ ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devto
 junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-annotation-jvm = { group = "androidx.annotation", name = "annotation-jvm", version = "1.7.1" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
