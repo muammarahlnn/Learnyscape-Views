@@ -1,4 +1,4 @@
-package com.muammarahlnn.convention
+package com.muammarahlnn.lsv
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog

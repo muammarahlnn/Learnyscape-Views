@@ -1,4 +1,4 @@
-package com.muammarahlnn.core.ui.store
+package com.muammarahlnn.lsv.core.ui.store
 
 import kotlinx.coroutines.flow.Flow
 

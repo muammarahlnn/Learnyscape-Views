@@ -1,5 +1,5 @@
 import com.android.build.gradle.LibraryExtension
-import com.muammarahlnn.convention.libs
+import com.muammarahlnn.lsv.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

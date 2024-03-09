@@ -1,10 +1,10 @@
 plugins {
-    id("learnyscape.android.library")
-    id("learnyscape.android.hilt")
+    id("lsv.android.library")
+    id("lsv.android.hilt")
 }
 
 android {
-    namespace = "com.muammarahlnn.learnyscape.core.ui"
+    namespace = "com.muammarahlnn.lsv.core.ui"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

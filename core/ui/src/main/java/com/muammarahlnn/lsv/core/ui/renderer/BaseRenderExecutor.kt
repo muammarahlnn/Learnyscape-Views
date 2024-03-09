@@ -1,12 +1,12 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.muammarahlnn.core.ui.renderer
+package com.muammarahlnn.lsv.core.ui.renderer
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.muammarahlnn.core.ui.viewmodel.BaseViewModel
+import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.scan
 

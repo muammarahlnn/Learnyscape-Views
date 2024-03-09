@@ -1,6 +1,6 @@
-package com.muammarahlnn.core.ui.ext
+package com.muammarahlnn.lsv.core.ui.ext
 
-import com.muammarahlnn.core.ui.state.BaseState
+import com.muammarahlnn.lsv.core.ui.state.BaseState
 
 /**
  * @Author Muammar Ahlan Abimanyu

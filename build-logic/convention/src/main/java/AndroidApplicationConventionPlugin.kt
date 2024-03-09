@@ -1,5 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.muammarahlnn.convention.configureKotlinAndroid
+import com.muammarahlnn.lsv.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

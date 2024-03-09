@@ -1,13 +1,13 @@
 plugins {
-    id("learnyscape.android.application")
-    id("learnyscape.android.hilt")
+    id("lsv.android.application")
+    id("lsv.android.hilt")
 }
 
 android {
-    namespace = "com.muammarahlnn.learnyscape"
+    namespace = "com.muammarahlnn.lsv"
 
     defaultConfig {
-        applicationId = "com.muammarahlnn.learnyscapeviews"
+        applicationId = "com.muammarahlnn.lsv"
         versionCode = 1
         versionName = "1.0"
 

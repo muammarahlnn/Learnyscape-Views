@@ -4,7 +4,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.muammarahlnn.learnyscape.buildlogic"
+group = "com.muammarahlnn.lsv.buildlogic"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -25,37 +25,37 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = "learnyscape.android.application"
+            id = "lsv.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
 
         register("androidLibrary") {
-            id = "learnyscape.android.library"
+            id = "lsv.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
 
         register("androidUi") {
-            id = "learnyscape.android.ui"
+            id = "lsv.android.ui"
             implementationClass = "AndroidUiConventionPlugin"
         }
 
         register("androidTest") {
-            id = "learnyscape.android.test"
+            id = "lsv.android.test"
             implementationClass = "AndroidTestConventionPlugin"
         }
 
         register("androidHilt") {
-            id = "learnyscape.android.hilt"
+            id = "lsv.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
 
         register("androidRoom") {
-            id = "learnyscape.android.room"
+            id = "lsv.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
         }
 
         register("jvmLibrary") {
-            id = "learnyscape.jvm.library"
+            id = "lsv.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"
         }
     }

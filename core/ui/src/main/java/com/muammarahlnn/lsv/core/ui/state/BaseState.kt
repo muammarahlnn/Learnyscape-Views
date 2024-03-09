@@ -1,4 +1,4 @@
-package com.muammarahlnn.core.ui.state
+package com.muammarahlnn.lsv.core.ui.state
 
 import java.io.Serializable
 

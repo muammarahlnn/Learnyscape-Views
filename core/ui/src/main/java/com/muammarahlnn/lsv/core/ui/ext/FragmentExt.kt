@@ -1,4 +1,4 @@
-package com.muammarahlnn.core.ui.ext
+package com.muammarahlnn.lsv.core.ui.ext
 
 import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes

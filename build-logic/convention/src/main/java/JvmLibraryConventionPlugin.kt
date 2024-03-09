@@ -1,4 +1,4 @@
-import com.muammarahlnn.convention.configureKotlinJvm
+import com.muammarahlnn.lsv.configureKotlinJvm
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

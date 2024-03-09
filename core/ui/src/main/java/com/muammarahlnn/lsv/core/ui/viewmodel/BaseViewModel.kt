@@ -1,14 +1,14 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.muammarahlnn.core.ui.viewmodel
+package com.muammarahlnn.lsv.core.ui.viewmodel
 
 import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.muammarahlnn.core.ui.event.EventStore
-import com.muammarahlnn.core.ui.state.StateStore
-import com.muammarahlnn.core.ui.store.Store
+import com.muammarahlnn.lsv.core.ui.event.EventStore
+import com.muammarahlnn.lsv.core.ui.state.StateStore
+import com.muammarahlnn.lsv.core.ui.store.Store
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filter

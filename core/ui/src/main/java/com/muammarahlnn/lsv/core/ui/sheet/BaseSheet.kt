@@ -1,33 +1,38 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.muammarahlnn.core.ui.fragment
+package com.muammarahlnn.lsv.core.ui.sheet
 
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.view.ViewGroup.LayoutParams
+import android.widget.FrameLayout
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavController
-import androidx.navigation.NavDirections
-import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.snackbar.Snackbar
-import com.muammarahlnn.core.ui.renderer.RendererInitializer
-import com.muammarahlnn.core.ui.viewmodel.BaseViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.muammarahlnn.lsv.core.ui.ext.screenHeight
+import com.muammarahlnn.lsv.core.ui.renderer.RendererInitializer
+import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.google.android.material.R as materialR
 
 /**
  * @Author Muammar Ahlan Abimanyu
- * @File BaseFragment, 08/03/2024 22.24
+ * @File BaseSheet, 09/03/2024 01.07
  */
-abstract class BaseFragment<VB: ViewBinding, R, E, VM: BaseViewModel<*, E>> : Fragment() {
+abstract class BaseSheet<VB: ViewBinding, R, E, VM: BaseViewModel<*, E>> : BottomSheetDialogFragment() {
 
     @Inject
     internal lateinit var rendererInitializer: RendererInitializer<R, VM>
@@ -35,12 +40,17 @@ abstract class BaseFragment<VB: ViewBinding, R, E, VM: BaseViewModel<*, E>> : Fr
     @Inject
     protected lateinit var thread: Thread
 
+    abstract val fullHeight: Boolean
+
     protected abstract val viewModel: VM
+
+    private val key: String
+        get() = javaClass.name
 
     private var _viewBinding: VB? = null
 
     protected val viewBinding: VB
-        get() =_viewBinding!!
+        get() = _viewBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,6 +62,32 @@ abstract class BaseFragment<VB: ViewBinding, R, E, VM: BaseViewModel<*, E>> : Fr
     }
 
     abstract fun createView(inflater: LayoutInflater, container: ViewGroup?): VB
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+        dialog.setOnShowListener(::adjustSheetHeight)
+
+        return dialog
+    }
+
+    private fun adjustSheetHeight(dialog: DialogInterface) {
+        val sheetLayout = (dialog as BottomSheetDialog).findViewById<FrameLayout>(materialR.id.design_bottom_sheet)
+        val sheetBehavior = BottomSheetBehavior.from(sheetLayout!!)
+
+        if (!fullHeight) {
+            sheetLayout.also { layout ->
+                layout.layoutParams.height = LayoutParams.WRAP_CONTENT
+            }
+        } else {
+            sheetLayout.also { layout ->
+                layout.layoutParams.height = LayoutParams.MATCH_PARENT
+            }
+
+            sheetBehavior.also { behavior ->
+                behavior.peekHeight = screenHeight
+            }
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -86,17 +122,13 @@ abstract class BaseFragment<VB: ViewBinding, R, E, VM: BaseViewModel<*, E>> : Fr
 
     abstract suspend fun action(event: E)
 
-    protected fun navigate(direction: NavDirections) {
-        findNavController().navigate(direction)
+    fun show(fragmentManager: FragmentManager?) {
+        fragmentManager ?: return
+        show(fragmentManager, key)
     }
 
-    protected fun back() {
-        findNavController().navigateUp()
-    }
-
-    protected fun showMessage(message: String?) {
-        message ?: return
-        Snackbar.make(viewBinding.root, message, Snackbar.LENGTH_SHORT).show()
+    override fun getTheme(): Int {
+        return 0 // TODO: change to theme in styles.xml
     }
 
     override fun onDestroyView() {

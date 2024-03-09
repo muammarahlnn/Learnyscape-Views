@@ -1,9 +1,8 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.muammarahlnn.core.ui.event
+package com.muammarahlnn.lsv.core.ui.event
 
-import com.muammarahlnn.core.ui.store.Store
-import kotlinx.coroutines.flow.Flow
+import com.muammarahlnn.lsv.core.ui.store.Store
 import kotlinx.coroutines.flow.MutableStateFlow
 
 /**

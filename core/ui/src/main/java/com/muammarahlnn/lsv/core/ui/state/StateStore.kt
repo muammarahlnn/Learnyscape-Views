@@ -1,6 +1,6 @@
-package com.muammarahlnn.core.ui.state
+package com.muammarahlnn.lsv.core.ui.state
 
-import com.muammarahlnn.core.ui.store.Store
+import com.muammarahlnn.lsv.core.ui.store.Store
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 

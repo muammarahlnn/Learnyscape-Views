@@ -1,4 +1,4 @@
-package com.muammarahlnn.convention
+package com.muammarahlnn.lsv
 
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import org.gradle.api.Project

@@ -1,7 +1,7 @@
-package com.muammarahlnn.learnyscapeviews
+package com.muammarahlnn.lsv
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.muammarahlnn.learnyscape.R
 
 class MainActivity : AppCompatActivity() {
