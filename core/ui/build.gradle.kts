@@ -16,6 +16,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:threading"))
+
     api(libs.androidx.core.ktx)
     api(libs.androidx.lifecycle.viewModel)
     api(libs.androidx.lifecycle.savedState)
