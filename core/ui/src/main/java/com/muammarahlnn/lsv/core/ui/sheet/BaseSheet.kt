@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.google.android.material.R as materialR
+import com.muammarahlnn.lsv.core.ui.R as uiR
 
 /**
  * @Author Muammar Ahlan Abimanyu
@@ -128,7 +129,7 @@ abstract class BaseSheet<VB: ViewBinding, R, E, VM: BaseViewModel<*, E>> : Botto
     }
 
     override fun getTheme(): Int {
-        return 0 // TODO: change to theme in styles.xml
+        return uiR.style.BottomSheetDialogTheme
     }
 
     override fun onDestroyView() {
