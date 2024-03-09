@@ -12,7 +12,6 @@ import com.muammarahlnn.core.ui.store.Store
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.filterNot
 
 /**
  * @Author Muammar Ahlan Abimanyu
@@ -61,3 +60,19 @@ abstract class BaseViewModel<S, E>(
         eventStore.process(newEvent)
     }
 }
+
+/**
+ * <?xml version="1.0" encoding="utf-8"?>
+ * <shape xmlns:android="http://schemas.android.com/apk/res/android"
+ *     android:shape="rectangle">
+ *
+ *     <corners
+ *         android:topLeftRadius="24dp"
+ *         android:topRightRadius="24dp" />
+ *
+ *     <solid />
+ *
+ * </shape>
+ */
+
+
