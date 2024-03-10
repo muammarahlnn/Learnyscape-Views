@@ -6,12 +6,14 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.muammarahlnn.lsv.core.threading.Thread
 import com.muammarahlnn.lsv.core.ui.event.EventStore
 import com.muammarahlnn.lsv.core.ui.state.StateStore
 import com.muammarahlnn.lsv.core.ui.store.Store
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filter
+import javax.inject.Inject
 
 /**
  * @Author Muammar Ahlan Abimanyu
@@ -21,6 +23,9 @@ abstract class BaseViewModel<S, E>(
     initialState: S,
     protected val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
+
+    @Inject
+    protected lateinit var thread: Thread
 
     private val key: String
         get() = javaClass.name
@@ -60,19 +65,3 @@ abstract class BaseViewModel<S, E>(
         eventStore.process(newEvent)
     }
 }
-
-/**
- * <?xml version="1.0" encoding="utf-8"?>
- * <shape xmlns:android="http://schemas.android.com/apk/res/android"
- *     android:shape="rectangle">
- *
- *     <corners
- *         android:topLeftRadius="24dp"
- *         android:topRightRadius="24dp" />
- *
- *     <solid />
- *
- * </shape>
- */
-
-
