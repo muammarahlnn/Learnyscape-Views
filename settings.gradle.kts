@@ -19,3 +19,4 @@ include(":app")
 
 include(":core:ui")
 include(":core:threading")
+include(":core:annotation")
