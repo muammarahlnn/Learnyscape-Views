@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="learnyscape">Learnyscape</string>
+    <string name="learnyscape_logo_desc">Learnyscape logo</string>
+    <string name="login">Login</string>
+    <string name="username_hint">NIM / NIP</string>
+    <string name="password_hint">Password</string>
+    <string name="learning_illustration_desc">Learning illustration</string>
+</resources>
