@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
  */
 val Fragment.screenHeight: Int
     get() = activity?.resources?.displayMetrics?.heightPixels ?: 0
+
 fun Fragment.readDrawable(@DrawableRes resId: Int): Drawable =
     requireContext().readDrawable(resId)
 

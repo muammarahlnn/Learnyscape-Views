@@ -6,46 +6,38 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.muammarahlnn.lsv.core.threading.Thread
-import com.muammarahlnn.lsv.core.ui.event.EventStore
-import com.muammarahlnn.lsv.core.ui.state.StateStore
-import com.muammarahlnn.lsv.core.ui.store.Store
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.filter
-import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 /**
  * @Author Muammar Ahlan Abimanyu
- * @File BaseViewModel, 08/03/2024 20.56
+ * @File BaseViewModel, 15/03/2024 16.36
  */
-abstract class BaseViewModel<S, E>(
+abstract class BaseViewModel<S>(
     initialState: S,
     protected val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
-    @Inject
-    protected lateinit var thread: Thread
-
     private val key: String
         get() = javaClass.name
 
-    private val stateStore: Store<S> = StateStore(
-        initialState = (restoreState() ?: initialState).apply {
+    private val _state = MutableStateFlow(
+        (restoreState() ?: initialState).apply {
             configureSavedStateProvider()
         }
     )
 
-    private val eventStore: Store<E> = EventStore()
-
-    internal val stateFlow: Flow<S>
-        get() = stateStore.stateFlow
-
-    internal val eventFlow: Flow<E>
-        get() = eventStore.stateFlow.filter { it != null }
+    protected val stateFlow: Flow<S>
+        get() = _state.asStateFlow()
 
     protected val state: S
-        get() = (stateStore.stateFlow as StateFlow).value
+        get() = _state.value
+
+    protected fun updateState(reducer: S.() -> S) {
+        _state.update(reducer)
+    }
 
     private fun configureSavedStateProvider() {
         savedStateHandle.setSavedStateProvider(key) {
@@ -55,13 +47,5 @@ abstract class BaseViewModel<S, E>(
 
     private fun restoreState(): S? = with(savedStateHandle.get<Bundle>(key)) {
         this?.get("state") as? S
-    }
-
-    protected fun render(newState: S) {
-        stateStore.process(newState)
-    }
-
-    protected fun action(newEvent: E) {
-        eventStore.process(newEvent)
     }
 }

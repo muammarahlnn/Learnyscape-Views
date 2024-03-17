@@ -1,3 +1,4 @@
+
 import com.android.build.api.dsl.ApplicationExtension
 import com.muammarahlnn.lsv.configureKotlinAndroid
 import org.gradle.api.Plugin
@@ -20,6 +21,10 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = 34
+
+                buildFeatures {
+                    viewBinding = true
+                }
             }
         }
     }

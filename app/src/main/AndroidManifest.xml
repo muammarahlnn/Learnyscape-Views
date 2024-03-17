@@ -14,8 +14,9 @@
         android:theme="@style/Theme.LearnyscapeViews"
         tools:targetApi="31">
         <activity
-            android:name="com.muammarahlnn.lsv.MainActivity"
-            android:exported="true">
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

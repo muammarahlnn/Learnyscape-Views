@@ -15,13 +15,17 @@ class AndroidUiConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply {
-                apply("learnyscape.android.library")
-                apply("learnyscape.android.hilt")
+                apply("lsv.android.library")
+                apply("lsv.android.hilt")
             }
 
             extensions.configure<LibraryExtension> {
                 defaultConfig {
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                }
+
+                buildFeatures {
+                    viewBinding = true
                 }
             }
 
@@ -32,6 +36,11 @@ class AndroidUiConventionPlugin : Plugin<Project> {
                 add("androidTestImplementation", kotlin("test"))
 
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.viewModel").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.savedState").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.runtime").get())
+                add("implementation", libs.findLibrary("androidx.navigation.fragment").get())
+                add("implementation", libs.findLibrary("androidx.navigation.ui").get())
             }
         }
     }
