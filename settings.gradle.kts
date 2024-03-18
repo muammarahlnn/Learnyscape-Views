@@ -20,3 +20,8 @@ include(":app")
 include(":core:ui")
 
 include(":ui:login")
+include(":ui:homenavigator")
+include(":ui:home")
+include(":ui:profile")
+include(":ui:schedule")
+include(":ui:discover")

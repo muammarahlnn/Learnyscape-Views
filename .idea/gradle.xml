@@ -28,7 +28,12 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/ui" />
+            <option value="$PROJECT_DIR$/ui/discover" />
+            <option value="$PROJECT_DIR$/ui/home" />
+            <option value="$PROJECT_DIR$/ui/homenavigator" />
             <option value="$PROJECT_DIR$/ui/login" />
+            <option value="$PROJECT_DIR$/ui/profile" />
+            <option value="$PROJECT_DIR$/ui/schedule" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
