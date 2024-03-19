@@ -38,6 +38,7 @@ dependencies {
     implementation(project(":core:ui"))
 
     implementation(project(":ui:login"))
+    implementation(project(":ui:homenavigator"))
 
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

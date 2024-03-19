@@ -10,7 +10,7 @@ import javax.inject.Inject
  * @File LoginViewModel, 11/03/2024 21.24
  */
 @HiltViewModel
-class LoginViewModel @Inject constructor(
+internal class LoginViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     initialState: LoginState,
 ) : BaseViewModel<LoginState>(initialState, savedStateHandle) {

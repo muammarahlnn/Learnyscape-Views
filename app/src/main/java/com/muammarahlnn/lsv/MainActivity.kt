@@ -4,12 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.createGraph
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.fragment
 import com.muammarahlnn.lsv.databinding.ActivityMainBinding
-import com.muammarahlnn.lsv.ui.login.screen.LoginNavigation
-import com.muammarahlnn.lsv.ui.login.screen.LoginUi
+import com.muammarahlnn.lsv.ui.homenavigator.navigation.homeNavigatorFragment
+import com.muammarahlnn.lsv.ui.login.screen.navigation.LOGIN_ROUTE
+import com.muammarahlnn.lsv.ui.login.screen.navigation.loginFragment
 import dagger.hilt.android.AndroidEntryPoint
-import com.muammarahlnn.lsv.ui.login.R as loginR
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -23,11 +22,10 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navRootContainer) as NavHostFragment
         val navController = navHostFragment.navController
         navController.graph = navController.createGraph(
-            startDestination = LoginNavigation.ROUTE
+            startDestination = LOGIN_ROUTE
         ) {
-            fragment<LoginUi>(LoginNavigation.ROUTE) {
-                label = resources.getString(loginR.string.login)
-            }
+            loginFragment()
+            homeNavigatorFragment()
         }
     }
 }

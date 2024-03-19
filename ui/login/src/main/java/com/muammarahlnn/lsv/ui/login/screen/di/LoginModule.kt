@@ -13,7 +13,7 @@ import dagger.hilt.android.components.ViewModelComponent
  */
 @Module
 @InstallIn(ViewModelComponent::class, FragmentComponent::class)
-object LoginModule {
+internal object LoginModule {
 
     @Provides
     fun providesState(): LoginState = LoginState()

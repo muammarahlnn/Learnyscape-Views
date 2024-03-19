@@ -7,5 +7,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":ui:home"))
+    implementation(project(":ui:discover"))
+    implementation(project(":ui:schedule"))
+    implementation(project(":ui:profile"))
+
     implementation(libs.material)
 }

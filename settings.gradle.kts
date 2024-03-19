@@ -18,6 +18,7 @@ rootProject.name = "Learnyscape Views"
 include(":app")
 
 include(":core:ui")
+include(":core:navigation")
 
 include(":ui:login")
 include(":ui:homenavigator")
