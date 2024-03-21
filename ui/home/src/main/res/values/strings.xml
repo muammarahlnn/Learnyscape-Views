@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="home">Home</string>
+    <string name="learnyscape">Learnyscape</string>
+    <string name="learnyscape_logo_desc">Learnyscape logo</string>
+    <string name="notifications_icon_desc">Notifications</string>
 </resources>
