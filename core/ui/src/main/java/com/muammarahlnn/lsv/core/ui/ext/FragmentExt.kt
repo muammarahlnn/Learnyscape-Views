@@ -1,6 +1,7 @@
 package com.muammarahlnn.lsv.core.ui.ext
 
 import android.graphics.drawable.Drawable
+import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
@@ -17,3 +18,6 @@ fun Fragment.readDrawable(@DrawableRes resId: Int): Drawable =
 
 fun Fragment.readText(@StringRes resId: Int, vararg formatArgs: Any): String =
     requireContext().readText(resId, formatArgs)
+
+fun Fragment.readColor(@ColorRes resId: Int): Int =
+    requireContext().readColor(resId)
