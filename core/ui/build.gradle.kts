@@ -16,6 +16,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.material)
     api(libs.androidx.core.ktx)
     api(libs.androidx.lifecycle.viewModel)
     api(libs.androidx.lifecycle.savedState)
