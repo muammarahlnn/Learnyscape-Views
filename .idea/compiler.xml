@@ -6,7 +6,6 @@
       <module name="Learnyscape_Views.build-logic.convention.main" target="17" />
       <module name="Learnyscape_Views.build-logic.convention.test" target="17" />
       <module name="Learnyscape_Views.core.processor" target="17" />
-      <module name="Learnyscape_Views.core.threading" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
