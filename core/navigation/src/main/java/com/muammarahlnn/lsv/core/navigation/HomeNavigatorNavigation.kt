@@ -9,5 +9,9 @@ import androidx.navigation.NavController
 const val HOME_NAVIGATOR_ROUTE = "home_navigator"
 
 fun NavController.navigateToHomeNavigator() {
-    navigate(HOME_NAVIGATOR_ROUTE)
+    navigate(HOME_NAVIGATOR_ROUTE) {
+        popUpTo(LOGIN_ROUTE) {
+            inclusive = true
+        }
+    }
 }
