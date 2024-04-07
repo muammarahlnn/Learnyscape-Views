@@ -1,6 +1,7 @@
 package com.muammarahlnn.lsv.ui.login.screen.di
 
 import com.muammarahlnn.lsv.ui.login.screen.LoginState
+import com.muammarahlnn.lsv.ui.login.screen.LoginUiState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,4 +18,7 @@ internal object LoginModule {
 
     @Provides
     fun providesState(): LoginState = LoginState()
+
+    @Provides
+    fun providesUiState(): LoginUiState = LoginUiState.None
 }

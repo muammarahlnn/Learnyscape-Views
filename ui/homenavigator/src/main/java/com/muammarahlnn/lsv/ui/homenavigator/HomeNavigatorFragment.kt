@@ -27,7 +27,7 @@ import com.muammarahlnn.lsv.core.ui.R as uiR
  * @File HomeNavigatorUi, 19/03/2024 03.23
  */
 @AndroidEntryPoint
-internal class HomeNavigatorFragment : BaseFragment<ScreenHomeNavigatorBinding, HomeNavigatorViewModel>() {
+internal class HomeNavigatorFragment : BaseFragment<ScreenHomeNavigatorBinding, HomeNavigatorViewModel, HomeNavigatorState>() {
 
     override val viewModel: HomeNavigatorViewModel by viewModels()
 
@@ -41,6 +41,8 @@ internal class HomeNavigatorFragment : BaseFragment<ScreenHomeNavigatorBinding, 
     override suspend fun onViewLoaded(savedInstanceState: Bundle?) {
         setupView()
     }
+
+    override fun renderState(state: HomeNavigatorState) {}
 
     private fun setupView() {
         setStatusBarColorToRed()

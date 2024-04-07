@@ -28,11 +28,10 @@ abstract class BaseViewModel<S>(
             configureSavedStateProvider()
         }
     )
-
-    protected val stateFlow: Flow<S>
+    val state: Flow<S>
         get() = _state.asStateFlow()
 
-    protected val state: S
+    protected val stateValue: S
         get() = _state.value
 
     protected fun updateState(reducer: S.() -> S) {
@@ -41,7 +40,7 @@ abstract class BaseViewModel<S>(
 
     private fun configureSavedStateProvider() {
         savedStateHandle.setSavedStateProvider(key) {
-            bundleOf("state" to state)
+            bundleOf("state" to stateValue)
         }
     }
 

@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
  * @Author Muammar Ahlan Abimanyu
  * @File BaseFragment, 17/03/2024 01.22
  */
-abstract class BaseFragment<VB: ViewBinding, VM: BaseViewModel<*>> : Fragment() {
+abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel<S>, S> : Fragment() {
 
     protected abstract val viewModel: VM
 
@@ -45,11 +45,14 @@ abstract class BaseFragment<VB: ViewBinding, VM: BaseViewModel<*>> : Fragment() 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 onViewLoaded(savedInstanceState)
+                viewModel.state.collect { renderState(it) }
             }
         }
     }
 
     abstract suspend fun onViewLoaded(savedInstanceState: Bundle?)
+
+    abstract fun renderState(state: S)
 
     protected fun navigate(direction: NavDirections) {
         findNavController().navigate(direction)

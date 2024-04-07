@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * @File DiscoverUi, 19/03/2024 02.03
  */
 @AndroidEntryPoint
-internal class DiscoverFragment : BaseFragment<ScreenDiscoverBinding, DiscoverViewModel>() {
+internal class DiscoverFragment : BaseFragment<ScreenDiscoverBinding, DiscoverViewModel, DiscoverState>() {
 
     override val viewModel: DiscoverViewModel by viewModels()
 
@@ -25,4 +25,6 @@ internal class DiscoverFragment : BaseFragment<ScreenDiscoverBinding, DiscoverVi
     }
 
     override suspend fun onViewLoaded(savedInstanceState: Bundle?) {}
+
+    override fun renderState(state: DiscoverState) { }
 }

@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * @File ScheduleUi, 19/03/2024 02.41
  */
 @AndroidEntryPoint
-internal class ScheduleFragment : BaseFragment<ScreenScheduleBinding, ScheduleViewModel>() {
+internal class ScheduleFragment : BaseFragment<ScreenScheduleBinding, ScheduleViewModel, ScheduleState>() {
 
     override val viewModel: ScheduleViewModel by viewModels()
 
@@ -25,4 +25,6 @@ internal class ScheduleFragment : BaseFragment<ScreenScheduleBinding, ScheduleVi
     }
 
     override suspend fun onViewLoaded(savedInstanceState: Bundle?) {}
+
+    override fun renderState(state: ScheduleState) {}
 }

@@ -32,6 +32,8 @@ class AndroidUiConventionPlugin : Plugin<Project> {
             dependencies {
                 add("implementation", project(":core:ui"))
                 add("implementation", project(":core:navigation"))
+                add("implementation", project(":core:model"))
+                add("implementation", project(":domain"))
 
                 add("testImplementation", kotlin("test"))
                 add("androidTestImplementation", kotlin("test"))

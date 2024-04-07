@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * @File ProfileUi, 19/03/2024 02.38
  */
 @AndroidEntryPoint
-internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewModel>( ){
+internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewModel, ProfileState>( ){
 
     override val viewModel: ProfileViewModel by viewModels()
 
@@ -22,4 +22,6 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
     }
 
     override suspend fun onViewLoaded(savedInstanceState: Bundle?) {}
+
+    override fun renderState(state: ProfileState) {}
 }

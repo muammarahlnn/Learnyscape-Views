@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * @File HomeUI, 19/03/2024 02.35
  */
 @AndroidEntryPoint
-internal class HomeFragment : BaseFragment<ScreenHomeBinding, HomeViewModel>() {
+internal class HomeFragment : BaseFragment<ScreenHomeBinding, HomeViewModel, HomeState>() {
 
     override val viewModel: HomeViewModel by viewModels()
 
@@ -31,6 +31,8 @@ internal class HomeFragment : BaseFragment<ScreenHomeBinding, HomeViewModel>() {
     override suspend fun onViewLoaded(savedInstanceState: Bundle?) {
         setupView()
     }
+
+    override fun renderState(state: HomeState) {}
 
     private fun setupView() {
         viewBinding.rvClasses.also { view ->
