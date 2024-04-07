@@ -37,4 +37,8 @@ class LoginRepository @Inject constructor(
     }.map { userEntity ->
         userEntityToModel.map(userEntity)
     }
+
+    fun isUserLoggedIn(): Flow<Boolean> = lsvPreferencesDataSource.getAccessToken().map { token ->
+        token.isNotEmpty()
+    }
 }
