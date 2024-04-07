@@ -1,6 +1,7 @@
 package com.muammarahlnn.lsv.core.navigation
 
 import androidx.navigation.NavController
+import com.muammarahlnn.lsv.core.util.addSlidingAnim
 
 /**
  * @Author Muammar Ahlan Abimanyu
@@ -9,9 +10,13 @@ import androidx.navigation.NavController
 const val HOME_NAVIGATOR_ROUTE = "home_navigator"
 
 fun NavController.navigateToHomeNavigator() {
-    navigate(HOME_NAVIGATOR_ROUTE) {
+    navigate(
+        route = HOME_NAVIGATOR_ROUTE,
+    ) {
         popUpTo(LOGIN_ROUTE) {
             inclusive = true
         }
+
+        addSlidingAnim()
     }
 }
