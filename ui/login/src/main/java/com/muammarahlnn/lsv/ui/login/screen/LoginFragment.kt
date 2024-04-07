@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.muammarahlnn.lsv.core.navigation.navigateToHomeNavigator
+import com.muammarahlnn.lsv.core.ui.ext.hideSoftKeyboard
 import com.muammarahlnn.lsv.core.ui.ext.readDrawable
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
 import com.muammarahlnn.lsv.ui.login.R
@@ -43,6 +44,8 @@ internal class LoginFragment : BaseFragment<ScreenLoginBinding, LoginViewModel, 
     private fun setupView() {
         viewBinding.btnLogin.also { button ->
             button.setOnClickListener {
+                it.hideSoftKeyboard()
+
                 viewModel.userLogin(
                     username = viewBinding.etUsername.text.toString(),
                     password = viewBinding.etPassword.text.toString()
