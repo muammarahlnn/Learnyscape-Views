@@ -5,4 +5,5 @@
     <string name="learnyscape_logo_desc">Learnyscape logo</string>
     <string name="notifications_icon_desc">Notifications</string>
     <string name="icon_class_desc">Icon class</string>
+    <string name="search_hint">Search a class…</string>
 </resources>

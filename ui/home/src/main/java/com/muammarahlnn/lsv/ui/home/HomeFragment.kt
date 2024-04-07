@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.muammarahlnn.lsv.core.ui.ext.readText
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
 import com.muammarahlnn.lsv.ui.home.adapter.ClassAdapter
 import com.muammarahlnn.lsv.ui.home.databinding.ScreenHomeBinding
@@ -35,6 +36,10 @@ internal class HomeFragment : BaseFragment<ScreenHomeBinding, HomeViewModel, Hom
     override fun renderState(state: HomeState) {}
 
     private fun setupView() {
+        viewBinding.searchBar.etSearch.also { view ->
+            view.hint = readText(R.string.search_hint)
+        }
+
         viewBinding.rvClasses.also { view ->
             view.adapter = adapter.apply {
                 setData(
