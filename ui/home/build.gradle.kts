@@ -9,4 +9,5 @@ android {
 dependencies {
     implementation(libs.material)
     implementation(libs.androidx.recyclerView)
+    implementation(libs.facebook.shimmer)
 }

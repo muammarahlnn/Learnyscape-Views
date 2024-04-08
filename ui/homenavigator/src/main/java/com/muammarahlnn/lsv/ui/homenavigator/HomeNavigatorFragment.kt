@@ -77,6 +77,7 @@ internal class HomeNavigatorFragment : BaseFragment<ScreenHomeNavigatorBinding, 
             // set to dark status bar
             WindowCompat.getInsetsController(this, decorView).apply {
                 isAppearanceLightStatusBars = false
+                navigationBarColor = readColor(uiR.color.black)
             }
         }
     }
