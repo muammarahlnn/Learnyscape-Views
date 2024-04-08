@@ -12,6 +12,7 @@ import com.muammarahlnn.lsv.ui.login.screen.navigation.LOGIN_ROUTE
 import com.muammarahlnn.lsv.ui.login.screen.navigation.loginFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.muammarahlnn.lsv.core.navigation.R as navigationR
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -26,8 +27,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         val startDestination = if (isUserLoggedInUseCase.execute()) HOME_NAVIGATOR_ROUTE else LOGIN_ROUTE
+        createNavControllerGraph(startDestination)
+    }
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navRootContainer) as NavHostFragment
+    private fun createNavControllerGraph(startDestination: String) {
+        val navHostFragment = supportFragmentManager.findFragmentById(navigationR.id.nav_root) as NavHostFragment
         val navController = navHostFragment.navController
         navController.graph = navController.createGraph(
             startDestination = startDestination

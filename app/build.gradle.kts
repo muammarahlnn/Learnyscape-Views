@@ -38,6 +38,7 @@ dependencies {
     implementation(project(":domain"))
 
     implementation(project(":core:ui"))
+    implementation(project(":core:navigation"))
 
     implementation(project(":ui:login"))
     implementation(project(":ui:homenavigator"))

@@ -1,7 +1,10 @@
 package com.muammarahlnn.lsv.ui.profile
 
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewModelScope
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
+import com.muammarahlnn.lsv.domain.base.execute
+import com.muammarahlnn.lsv.domain.profile.UserLogoutUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -13,4 +16,10 @@ import javax.inject.Inject
 internal class ProfileViewModel @Inject constructor(
     initialState: ProfileState,
     savedStateHandle: SavedStateHandle,
-) : BaseViewModel<ProfileState>(initialState, savedStateHandle)
+    private val userLogoutUseCase: UserLogoutUseCase,
+) : BaseViewModel<ProfileState>(initialState, savedStateHandle) {
+
+    fun userLogout() {
+        userLogoutUseCase.execute(viewModelScope)
+    }
+}
