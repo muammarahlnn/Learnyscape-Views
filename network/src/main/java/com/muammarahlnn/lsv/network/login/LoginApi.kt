@@ -1,4 +1,4 @@
-package com.muammarahlnn.lsv.network.api
+package com.muammarahlnn.lsv.network.login
 
 import com.muammarahlnn.lsv.network.base.BaseResponse
 import com.muammarahlnn.lsv.network.login.response.LoginResponse

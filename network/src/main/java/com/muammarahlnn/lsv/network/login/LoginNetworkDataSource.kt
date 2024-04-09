@@ -1,6 +1,5 @@
 package com.muammarahlnn.lsv.network.login
 
-import com.muammarahlnn.lsv.network.api.LoginApi
 import com.muammarahlnn.lsv.network.login.response.LoginResponse
 import com.muammarahlnn.lsv.network.login.response.UserResponse
 import kotlinx.coroutines.flow.Flow

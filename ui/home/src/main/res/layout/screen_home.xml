@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
+        android:id="@+id/loading"
         layout="@layout/shimmer_home"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -26,7 +27,6 @@
     <include
         android:id="@+id/search_bar"
         layout="@layout/search_bar"
-        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -37,7 +37,6 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvClasses"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

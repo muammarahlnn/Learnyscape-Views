@@ -1,7 +1,9 @@
 package com.muammarahlnn.lsv.ui.home
 
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewModelScope
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
+import com.muammarahlnn.lsv.domain.home.GetEnrolledClassesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -11,6 +13,27 @@ import javax.inject.Inject
  */
 @HiltViewModel
 internal class HomeViewModel @Inject constructor(
-    initialState: HomeState,
+    private val getEnrolledClassesUseCase: GetEnrolledClassesUseCase,
+    initialState: HomeUiState,
     savedStateHandle: SavedStateHandle,
-) : BaseViewModel<HomeState>(initialState, savedStateHandle)
+) : BaseViewModel<HomeUiState>(initialState, savedStateHandle) {
+
+    fun fetchEnrolledClasses() {
+        getEnrolledClassesUseCase.execute(
+            params = Unit,
+            coroutineScope = viewModelScope,
+            onStart = {
+                updateState { HomeUiState.Loading }
+            },
+            onSuccess = { enrolledClasses ->
+                updateState {
+                    if (enrolledClasses.isNotEmpty()) HomeUiState.Success(enrolledClasses)
+                    else HomeUiState.SuccessEmpty
+                }
+            },
+            onError = { throwable ->
+                updateState { HomeUiState.Error(throwable.message.toString()) }
+            }
+        )
+    }
+}

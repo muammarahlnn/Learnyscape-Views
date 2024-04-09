@@ -1,7 +1,10 @@
 package com.muammarahlnn.lsv.network.di
 
+import com.muammarahlnn.lsv.datastore.LsvPreferencesDataSource
 import com.muammarahlnn.lsv.network.BuildConfig
+import com.muammarahlnn.lsv.network.di.AuthQualifiers.BEARER_TOKEN
 import com.muammarahlnn.lsv.network.di.AuthQualifiers.DEFAULT
+import com.muammarahlnn.lsv.network.interceptor.BearerTokenInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,6 +26,15 @@ object ClientModule {
     @Singleton
     @Auth(DEFAULT)
     fun providesDefaultOkhttpClient(): OkHttpClient = buildOkHttpClient()
+
+    @Provides
+    @Singleton
+    @Auth(BEARER_TOKEN)
+    fun providesBearerTokenOkHttpClient(
+        lsvPreferencesDataSource: LsvPreferencesDataSource,
+    ): OkHttpClient = buildOkHttpClient(
+        interceptor = BearerTokenInterceptor(lsvPreferencesDataSource)
+    )
 }
 
 private fun buildOkHttpClient(interceptor: Interceptor? = null): OkHttpClient =

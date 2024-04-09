@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.muammarahlnn.lsv.core.model.EnrolledClassModel
+import com.muammarahlnn.lsv.core.ui.ext.hide
 import com.muammarahlnn.lsv.core.ui.ext.readText
+import com.muammarahlnn.lsv.core.ui.ext.show
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
 import com.muammarahlnn.lsv.ui.home.adapter.ClassAdapter
 import com.muammarahlnn.lsv.ui.home.databinding.ScreenHomeBinding
@@ -15,13 +18,13 @@ import dagger.hilt.android.AndroidEntryPoint
  * @File HomeUI, 19/03/2024 02.35
  */
 @AndroidEntryPoint
-internal class HomeFragment : BaseFragment<ScreenHomeBinding, HomeViewModel, HomeState>() {
+internal class HomeFragment : BaseFragment<ScreenHomeBinding, HomeViewModel, HomeUiState>() {
 
     override val viewModel: HomeViewModel by viewModels()
 
     private val adapter: ClassAdapter by lazy {
-        ClassAdapter { className ->
-            showMessage(className)
+        ClassAdapter { enrolledClass ->
+            showMessage(enrolledClass.className)
         }
     }
 
@@ -31,23 +34,52 @@ internal class HomeFragment : BaseFragment<ScreenHomeBinding, HomeViewModel, Hom
 
     override suspend fun onViewLoaded(savedInstanceState: Bundle?) {
         setupView()
+        if (savedInstanceState == null) {
+            viewModel.fetchEnrolledClasses()
+        }
     }
 
-    override fun renderState(state: HomeState) {}
+    override fun renderState(state: HomeUiState) {
+        when (state) {
+            HomeUiState.Loading -> renderLoadingState()
+            is HomeUiState.Success -> renderSuccessState(state.enrolledClasses)
+
+            HomeUiState.SuccessEmpty -> {
+                // TODO: add success empty state
+            }
+
+            is HomeUiState.Error -> {
+                // TODO: add error state
+            }
+        }
+    }
 
     private fun setupView() {
         viewBinding.searchBar.etSearch.also { view ->
             view.hint = readText(R.string.search_hint)
         }
+    }
+
+    private fun renderLoadingState() {
+        with(viewBinding) {
+            loading.root.show()
+
+            searchBar.root.hide()
+            rvClasses.hide()
+        }
+    }
+
+    private fun renderSuccessState(enrolledClasses: List<EnrolledClassModel>) {
+        with(viewBinding)  {
+            loading.root.hide()
+
+            searchBar.root.show()
+            rvClasses.show()
+        }
 
         viewBinding.rvClasses.also { view ->
             view.adapter = adapter.apply {
-                setData(
-                    listOf(
-                        "Pemrograman Mobile A",
-                        "Pemrograman Dasar B",
-                    )
-                )
+                setData(enrolledClasses)
             }
         }
     }

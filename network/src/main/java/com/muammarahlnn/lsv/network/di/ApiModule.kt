@@ -1,9 +1,11 @@
 package com.muammarahlnn.lsv.network.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.muammarahlnn.lsv.network.api.LoginApi
 import com.muammarahlnn.lsv.network.base.Server
+import com.muammarahlnn.lsv.network.di.AuthQualifiers.BEARER_TOKEN
 import com.muammarahlnn.lsv.network.di.AuthQualifiers.DEFAULT
+import com.muammarahlnn.lsv.network.home.HomeApi
+import com.muammarahlnn.lsv.network.login.LoginApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,6 +34,13 @@ object ApiModule {
         networkJson: Json,
         @Auth(DEFAULT) client: OkHttpClient,
     ): LoginApi = buildRetrofit(networkJson, client).create(LoginApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesHomeApi(
+        networkJson: Json,
+        @Auth(BEARER_TOKEN) client: OkHttpClient,
+    ): HomeApi = buildRetrofit(networkJson, client).create(HomeApi::class.java)
 }
 
 private fun buildRetrofit(

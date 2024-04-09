@@ -1,6 +1,6 @@
 package com.muammarahlnn.lsv.ui.home.di
 
-import com.muammarahlnn.lsv.ui.home.HomeState
+import com.muammarahlnn.lsv.ui.home.HomeUiState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object HomeModule {
 
     @Provides
-    fun providesState(): HomeState = HomeState()
+    fun providesState(): HomeUiState = HomeUiState.Loading
 }
