@@ -3,6 +3,7 @@ package com.muammarahlnn.lsv.ui.homenavigator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
@@ -80,6 +81,20 @@ internal class HomeNavigatorFragment : BaseFragment<ScreenHomeNavigatorBinding, 
                 true
             }
         }
+
+        // set the selected nav view item when back pressed because it's not automatically updated
+        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                navController.navigateUp()
+                viewBinding.navView.selectedItemId = when (navController.currentDestination?.route) {
+                    HOME_ROUTE -> R.id.navigationHome
+                    DISCOVER_ROUTE -> R.id.navigationDiscover
+                    SCHEDULE_ROUTE -> R.id.navigationSchedule
+                    PROFILE_ROUTE -> R.id.navigationProfile
+                    else -> R.id.navigationHome
+                }
+            }
+        })
     }
 
     private fun buildHomeNavigatorNavOptions(popUpToRoute: String): NavOptions = navOptions {
