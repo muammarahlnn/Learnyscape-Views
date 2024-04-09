@@ -1,6 +1,7 @@
 package com.muammarahlnn.lsv.core.navigation
 
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 
 /**
  * @Author Muammar Ahlan Abimanyu
@@ -8,6 +9,6 @@ import androidx.navigation.NavController
  */
 private const val DISCOVER_ROUTE = "discover"
 
-fun NavController.navigateToDiscover() {
-    navigate(DISCOVER_ROUTE)
+fun NavController.navigateToDiscover(navOptions: NavOptions? = null) {
+    navigate(DISCOVER_ROUTE, navOptions)
 }

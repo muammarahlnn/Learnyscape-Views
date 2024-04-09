@@ -1,6 +1,7 @@
 package com.muammarahlnn.lsv.core.navigation
 
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 
 /**
  * @Author Muammar Ahlan Abimanyu
@@ -8,6 +9,6 @@ import androidx.navigation.NavController
  */
 private const val HOME_ROUTE = "home"
 
-fun NavController.navigateToHome() {
-    navigate(HOME_ROUTE)
+fun NavController.navigateToHome(navOptions: NavOptions? = null) {
+    navigate(HOME_ROUTE, navOptions)
 }

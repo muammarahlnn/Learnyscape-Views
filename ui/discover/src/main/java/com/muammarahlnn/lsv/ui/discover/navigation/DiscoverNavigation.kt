@@ -8,7 +8,7 @@ import com.muammarahlnn.lsv.ui.discover.DiscoverFragment
  * @Author Muammar Ahlan Abimanyu
  * @File DiscoverNavigation, 19/03/2024 03.52
  */
-private const val DISCOVER_ROUTE = "discover"
+const val DISCOVER_ROUTE = "discover"
 
 fun NavGraphBuilder.discoverFragment() {
     fragment<DiscoverFragment>(DISCOVER_ROUTE) {
