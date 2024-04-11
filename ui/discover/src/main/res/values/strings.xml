@@ -2,4 +2,6 @@
 <resources>
     <string name="discover">Discover</string>
     <string name="ic_pending_request_desc">Pending request classes</string>
+    <string name="requested">Requested</string>
+    <string name="available_class_item_icon_desc">Available class item icon</string>
 </resources>
