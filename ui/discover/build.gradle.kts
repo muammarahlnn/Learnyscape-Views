@@ -8,4 +8,6 @@ android {
 
 dependencies {
     implementation(libs.material)
+    implementation(libs.facebook.shimmer)
+    implementation(libs.kotlinx.datetime)
 }

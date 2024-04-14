@@ -1,6 +1,6 @@
 package com.muammarahlnn.lsv.ui.discover.di
 
-import com.muammarahlnn.lsv.ui.discover.DiscoverState
+import com.muammarahlnn.lsv.ui.discover.DiscoverUiState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object DiscoverModule {
 
     @Provides
-    fun providesState(): DiscoverState = DiscoverState()
+    fun providesState(): DiscoverUiState = DiscoverUiState.FetchLoading(loading = true)
 }

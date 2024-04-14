@@ -79,7 +79,7 @@ internal class HomeFragment : BaseFragment<ScreenHomeBinding, HomeViewModel, Hom
 
         viewBinding.rvClasses.also { view ->
             view.adapter = adapter.apply {
-                setData(enrolledClasses)
+                setItems(enrolledClasses)
             }
         }
     }

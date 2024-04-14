@@ -14,25 +14,8 @@ internal class ClassAdapter(
     private val onItemClickListener: (EnrolledClassModel) -> Unit,
 ) : BaseAdapter<EnrolledClassModel, ClassViewHolder>() {
 
-    private val data = mutableListOf<EnrolledClassModel>()
-
-    fun setData(data: List<EnrolledClassModel>) {
-        this.data.apply {
-            clear()
-            addAll(data)
-        }
-        notifyItemRangeChanged(0, this.data.size)
-    }
-
     override fun createViewHolder(inflater: LayoutInflater, parent: ViewGroup): ClassViewHolder {
         val viewBinding = ItemClassBinding.inflate(inflater, parent, false)
         return ClassViewHolder(viewBinding, onItemClickListener)
     }
-
-    override fun bindViewHolder(holder: ClassViewHolder) {
-        val state = data[holder.adapterPosition]
-        holder.render(state)
-    }
-
-    override fun getItemCount(): Int = data.size
 }

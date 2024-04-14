@@ -11,16 +11,26 @@ import com.muammarahlnn.lsv.core.ui.widget.viewholder.BaseViewHolder
  */
 abstract class BaseAdapter<T : Any, VH : BaseViewHolder<*, T>> : Adapter<VH>() {
 
+    private val items = mutableListOf<T>()
+
+    fun setItems(items: List<T>) {
+        this.items.apply {
+            clear()
+            addAll(items)
+        }
+        notifyItemRangeChanged(0, this.items.size)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val inflater = LayoutInflater.from(parent.context)
         return createViewHolder(inflater, parent)
     }
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
-        bindViewHolder(holder)
-    }
-
     abstract fun createViewHolder(inflater: LayoutInflater, parent: ViewGroup): VH
 
-    abstract fun bindViewHolder(holder: VH)
+    override fun onBindViewHolder(holder: VH, position: Int) {
+        holder.render(items[position])
+    }
+
+    override fun getItemCount(): Int = items.size
 }
