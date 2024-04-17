@@ -20,7 +20,7 @@ fun Fragment.readDrawable(@DrawableRes resId: Int): Drawable =
     requireContext().readDrawable(resId)
 
 fun Fragment.readText(@StringRes resId: Int, vararg formatArgs: Any): String =
-    requireContext().readText(resId, formatArgs)
+    requireContext().readText(resId, *formatArgs)
 
 fun Fragment.readColor(@ColorRes resId: Int): Int =
     requireContext().readColor(resId)

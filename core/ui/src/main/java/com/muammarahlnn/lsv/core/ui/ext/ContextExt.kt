@@ -14,6 +14,6 @@ import androidx.core.content.ContextCompat
 fun Context.readDrawable(@DrawableRes resId: Int): Drawable = drawable(resId)
 
 fun Context.readText(@StringRes resId: Int, vararg formatArgs: Any): String =
-    getString(resId, formatArgs)
+    getString(resId, *formatArgs)
 
 fun Context.readColor(@ColorRes resId: Int): Int = ContextCompat.getColor(this, resId)
