@@ -16,5 +16,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object DiscoverModule {
 
     @Provides
-    fun providesState(): DiscoverUiState = DiscoverUiState.FetchLoading(loading = true)
+    fun providesState(): DiscoverUiState = DiscoverUiState.OnFetchAvailableClasses(loading = true)
 }

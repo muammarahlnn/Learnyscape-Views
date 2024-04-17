@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.muammarahlnn.lsv.core.model.AvailableClassModel
-import com.muammarahlnn.lsv.core.ui.ext.hide
+import com.muammarahlnn.lsv.core.ui.dialog.BaseDialog
+import com.muammarahlnn.lsv.core.ui.dialog.LoadingDialog
+import com.muammarahlnn.lsv.core.ui.ext.  hide
 import com.muammarahlnn.lsv.core.ui.ext.readText
 import com.muammarahlnn.lsv.core.ui.ext.show
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
@@ -24,8 +26,16 @@ internal class DiscoverFragment : BaseFragment<ScreenDiscoverBinding, DiscoverVi
 
     private val adapter: AvailableClassAdapter by lazy {
         AvailableClassAdapter { availableClass ->
-            showMessage(availableClass.name)
+            if (!availableClass.isRequested()) {
+                showRequestJoinClassDialog(availableClass)
+            } else {
+                showCancelRequestJoinClassDialog(availableClass)
+            }
         }
+    }
+
+    private val loadingDialog: LoadingDialog by lazy {
+        LoadingDialog()
     }
 
     override fun createView(
@@ -50,9 +60,29 @@ internal class DiscoverFragment : BaseFragment<ScreenDiscoverBinding, DiscoverVi
 
     override fun renderState(state: DiscoverUiState) {
         when (state) {
-            is DiscoverUiState.FetchLoading -> renderLoadingState(state.loading)
-            is DiscoverUiState.Error -> showMessage(state.message)
-            is DiscoverUiState.Success -> renderSuccessState(state.availableClasses)
+            is DiscoverUiState.OnFetchAvailableClasses ->
+                renderLoadingState(state.loading)
+
+            is DiscoverUiState.OnErrorFetchAvailableClasses ->
+                showMessage(state.message)
+
+            is DiscoverUiState.OnSuccessFetchAvailableClasses ->
+                renderSuccessState(state.availableClasses)
+
+            is DiscoverUiState.OnRequestJoinClass ->
+                renderRequestJonClassLoadingState(state.loading)
+
+            is DiscoverUiState.OnErrorRequestJoinClass ->
+                showMessage(state.message)
+
+            is DiscoverUiState.OnSuccessRequestJoinClass ->
+                showMessage(
+                    if (!state.isCancelRequest) {
+                        readText(R.string.success_join_request_class_message, state.className)
+                    } else {
+                        readText(R.string.success_cancel_join_request_class_message, state.className)
+                    }
+                )
         }
     }
 
@@ -76,5 +106,38 @@ internal class DiscoverFragment : BaseFragment<ScreenDiscoverBinding, DiscoverVi
                 setItems(availableClasses)
             }
         }
+    }
+
+    private fun showRequestJoinClassDialog(availableClass: AvailableClassModel) {
+        BaseDialog(
+            title = readText(R.string.join_request_dialog_title),
+            message = readText(R.string.join_request_dialog_message, availableClass.name),
+            positiveText = readText(R.string.join_request_dialog_positive_text),
+            negativeText = readText(R.string.dialog_negative_text),
+            onPositiveClick = { dialog ->
+                viewModel.requestJoinClass(availableClass)
+                dialog.dismiss()
+            },
+            onNegativeClick = { dialog -> dialog.dismiss() }
+        ).show(activity?.supportFragmentManager)
+    }
+
+    private fun showCancelRequestJoinClassDialog(availableClass: AvailableClassModel) {
+        BaseDialog(
+            title = readText(R.string.cancel_request_dialog_title),
+            message = readText(R.string.cancel_request_dialog_message, availableClass.name),
+            positiveText = readText(R.string.cancel_request_dialog_positive_text),
+            negativeText = readText(R.string.dialog_negative_text),
+            onPositiveClick = { dialog ->
+                viewModel.cancelRequestJoinClass(availableClass)
+                dialog.dismiss()
+            },
+            onNegativeClick = { dialog -> dialog.dismiss() }
+        ).show(activity?.supportFragmentManager)
+    }
+
+    private fun renderRequestJonClassLoadingState(loading: Boolean) {
+        if (loading) loadingDialog.show(activity?.supportFragmentManager)
+        else loadingDialog.hide()
     }
 }

@@ -1,8 +1,11 @@
 package com.muammarahlnn.lsv.network.discover
 
 import com.muammarahlnn.lsv.network.base.BaseResponse
+import com.muammarahlnn.lsv.network.discover.request.RequestJoinClassRequest
 import com.muammarahlnn.lsv.network.discover.response.AvailableClassResponse
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.PUT
 import retrofit2.http.Query
 
 /**
@@ -15,4 +18,9 @@ interface DiscoverApi {
     suspend fun getAvailableClasses(
         @Query("search") searchQuery: String,
     ): BaseResponse<List<AvailableClassResponse>>
+
+    @PUT("users/classes")
+    suspend fun putRequestJoinClass(
+        @Body requestJoinClassRequest: RequestJoinClassRequest,
+    ): BaseResponse<String>
 }

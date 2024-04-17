@@ -5,4 +5,13 @@
     <string name="requested">Requested</string>
     <string name="available_class_item_icon_desc">Available class item icon</string>
     <string name="search_hint">What class are you looking for?</string>
+    <string name="dialog_negative_text">Dismiss</string>
+    <string name="join_request_dialog_title">Join Request</string>
+    <string name="join_request_dialog_message">Request to join %1$s class?</string>
+    <string name="join_request_dialog_positive_text">Request</string>
+    <string name="cancel_request_dialog_title">Cancel Request</string>
+    <string name="cancel_request_dialog_message">Are you sure want to cancel your request for %1$s class?</string>
+    <string name="cancel_request_dialog_positive_text">Yes, cancel</string>
+    <string name="success_join_request_class_message">Successfully requested to join %1$s class</string>
+    <string name="success_cancel_join_request_class_message">Successfully canceled %1$s class\'s join request</string>
 </resources>

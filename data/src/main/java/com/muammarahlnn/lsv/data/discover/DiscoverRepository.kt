@@ -20,4 +20,10 @@ class DiscoverRepository @Inject constructor(
         discoverNetworkDataSource.getAvailableClasses(searchQuery).map {
             it.map(availableClassResponseToModel::map)
         }
+
+    fun requestJoinClass(classId: String): Flow<String> =
+        discoverNetworkDataSource.requestJoinClass(classId)
+
+    fun cancelRequestJoinClass(classId: String): Flow<String> =
+        discoverNetworkDataSource.cancelRequestJoinClass(classId)
 }

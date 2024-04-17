@@ -8,9 +8,18 @@ import com.muammarahlnn.lsv.core.model.AvailableClassModel
  */
 internal sealed interface DiscoverUiState {
 
-    data class FetchLoading(val loading: Boolean) : DiscoverUiState
+    data class OnFetchAvailableClasses(val loading: Boolean) : DiscoverUiState
 
-    data class Success(val availableClasses: List<AvailableClassModel>) : DiscoverUiState
+    data class OnSuccessFetchAvailableClasses(val availableClasses: List<AvailableClassModel>) : DiscoverUiState
 
-    data class Error(val message: String) : DiscoverUiState
+    data class OnErrorFetchAvailableClasses(val message: String) : DiscoverUiState
+
+    data class OnRequestJoinClass(val loading : Boolean) : DiscoverUiState
+
+    data class OnSuccessRequestJoinClass(
+        val className: String,
+        val isCancelRequest: Boolean,
+    ) : DiscoverUiState
+
+    data class OnErrorRequestJoinClass(val message: String) : DiscoverUiState
 }
