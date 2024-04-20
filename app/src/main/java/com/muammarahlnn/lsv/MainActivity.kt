@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.createGraph
 import androidx.navigation.fragment.NavHostFragment
+import com.muammarahlnn.lsv.core.navigation.HOME_NAVIGATOR_ROUTE
+import com.muammarahlnn.lsv.core.navigation.LOGIN_ROUTE
 import com.muammarahlnn.lsv.databinding.ActivityMainBinding
 import com.muammarahlnn.lsv.domain.login.IsUserLoggedInUseCase
-import com.muammarahlnn.lsv.ui.homenavigator.navigation.HOME_NAVIGATOR_ROUTE
 import com.muammarahlnn.lsv.ui.homenavigator.navigation.homeNavigatorFragment
-import com.muammarahlnn.lsv.ui.login.screen.navigation.LOGIN_ROUTE
 import com.muammarahlnn.lsv.ui.login.screen.navigation.loginFragment
 import com.muammarahlnn.ui.lsv.notifications.navigation.notificationsFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,7 +27,11 @@ class MainActivity : AppCompatActivity() {
             setContentView(viewBinding.root)
         }
 
-        val startDestination = if (isUserLoggedInUseCase.execute()) HOME_NAVIGATOR_ROUTE else LOGIN_ROUTE
+        val startDestination = if (isUserLoggedInUseCase.execute()) {
+            HOME_NAVIGATOR_ROUTE
+        } else {
+            LOGIN_ROUTE
+        }
         createNavControllerGraph(startDestination)
     }
 

@@ -15,3 +15,7 @@ fun NavOptionsBuilder.addSlidingAnim() {
         popExit = R.anim.slide_out_right
     }
 }
+
+fun NavOptionsBuilder.innerNavigation() {
+
+}

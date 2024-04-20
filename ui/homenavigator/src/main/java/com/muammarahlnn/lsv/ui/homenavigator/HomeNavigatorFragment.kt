@@ -10,20 +10,20 @@ import androidx.navigation.NavOptions
 import androidx.navigation.createGraph
 import androidx.navigation.findNavController
 import androidx.navigation.navOptions
+import com.muammarahlnn.lsv.core.navigation.DISCOVER_ROUTE
+import com.muammarahlnn.lsv.core.navigation.HOME_ROUTE
+import com.muammarahlnn.lsv.core.navigation.PROFILE_ROUTE
+import com.muammarahlnn.lsv.core.navigation.SCHEDULE_ROUTE
 import com.muammarahlnn.lsv.core.navigation.navigateToDiscover
 import com.muammarahlnn.lsv.core.navigation.navigateToHome
 import com.muammarahlnn.lsv.core.navigation.navigateToProfile
 import com.muammarahlnn.lsv.core.navigation.navigateToSchedule
 import com.muammarahlnn.lsv.core.ui.ext.readColor
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
-import com.muammarahlnn.lsv.ui.discover.navigation.DISCOVER_ROUTE
 import com.muammarahlnn.lsv.ui.discover.navigation.discoverFragment
-import com.muammarahlnn.lsv.ui.home.navigation.HOME_ROUTE
 import com.muammarahlnn.lsv.ui.home.navigation.homeFragment
 import com.muammarahlnn.lsv.ui.homenavigator.databinding.ScreenHomeNavigatorBinding
-import com.muammarahlnn.lsv.ui.profile.navigation.PROFILE_ROUTE
 import com.muammarahlnn.lsv.ui.profile.navigation.profileFragment
-import com.muammarahlnn.lsv.ui.schedule.navigation.SCHEDULE_ROUTE
 import com.muammarahlnn.lsv.ui.schedule.navigation.scheduleFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.muammarahlnn.lsv.core.ui.R as uiR

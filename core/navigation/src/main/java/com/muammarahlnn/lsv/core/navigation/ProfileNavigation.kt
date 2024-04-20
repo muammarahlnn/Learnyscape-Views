@@ -7,7 +7,7 @@ import androidx.navigation.NavOptions
  * @Author Muammar Ahlan Abimanyu
  * @File ProfileNavigation, 19/03/2024 14.06
  */
-private const val PROFILE_ROUTE = "profile"
+const val PROFILE_ROUTE = "profile"
 
 fun NavController.navigateToProfile(navOptions: NavOptions? = null) {
     navigate(PROFILE_ROUTE, navOptions)
