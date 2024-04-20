@@ -10,7 +10,7 @@ import javax.inject.Inject
  * @File NotificationsViewModel, 20/04/2024 15.46
  */
 @HiltViewModel
-class NotificationsViewModel @Inject constructor(
+internal class NotificationsViewModel @Inject constructor(
     initialState: NotificationsUiState,
     savedStateHandle: SavedStateHandle,
 ) : BaseViewModel<NotificationsUiState>(initialState, savedStateHandle)

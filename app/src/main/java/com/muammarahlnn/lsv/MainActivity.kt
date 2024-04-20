@@ -10,6 +10,7 @@ import com.muammarahlnn.lsv.ui.homenavigator.navigation.HOME_NAVIGATOR_ROUTE
 import com.muammarahlnn.lsv.ui.homenavigator.navigation.homeNavigatorFragment
 import com.muammarahlnn.lsv.ui.login.screen.navigation.LOGIN_ROUTE
 import com.muammarahlnn.lsv.ui.login.screen.navigation.loginFragment
+import com.muammarahlnn.ui.lsv.notifications.navigation.notificationsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.muammarahlnn.lsv.core.navigation.R as navigationR
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         ) {
             loginFragment()
             homeNavigatorFragment()
+            notificationsFragment()
         }
     }
 }
