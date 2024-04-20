@@ -21,11 +21,13 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPendingRequests"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:paddingTop="16dp"
         android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_pending_request"
         tools:itemCount="4"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />

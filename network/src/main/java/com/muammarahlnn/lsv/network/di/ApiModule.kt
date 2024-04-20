@@ -8,6 +8,7 @@ import com.muammarahlnn.lsv.network.discover.DiscoverApi
 import com.muammarahlnn.lsv.network.home.HomeApi
 import com.muammarahlnn.lsv.network.login.LoginApi
 import com.muammarahlnn.lsv.network.notifications.NotificationsApi
+import com.muammarahlnn.lsv.network.pendingrequest.PendingRequestApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -57,6 +58,13 @@ object ApiModule {
         networkJson: Json,
         @Auth(BEARER_TOKEN) client: OkHttpClient,
     ): NotificationsApi = buildRetrofit(networkJson, client).create(NotificationsApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesPendingRequestApi(
+        networkJson: Json,
+        @Auth(BEARER_TOKEN) client: OkHttpClient,
+    ): PendingRequestApi = buildRetrofit(networkJson, client).create(PendingRequestApi::class.java)
 }
 
 private fun buildRetrofit(

@@ -3,4 +3,9 @@
     <string name="icon_class_desc">Icon class</string>
     <string name="icon_cancel_desc">Icon cancel</string>
     <string name="pending_requests">Pending Requests</string>
+    <string name="cancel_request_dialog_title">Cancel Request</string>
+    <string name="cancel_request_dialog_message">Are you sure want to cancel your request for %1$s class?</string>
+    <string name="cancel_request_dialog_positive_text">Yes, cancel</string>
+    <string name="cancel_request_dialog_negative_text">Dismiss</string>
+    <string name="success_cancel_join_request_class_message">Successfully canceled %1$s class\'s join request</string>
 </resources>
