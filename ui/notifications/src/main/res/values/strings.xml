@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_type_icon_desc">Notification type icon</string>
+    <string name="notifications">Notifications</string>
+    <string name="back_button_desc">Back button</string>
+</resources>

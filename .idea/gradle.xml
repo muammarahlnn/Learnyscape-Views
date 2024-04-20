@@ -39,6 +39,7 @@
             <option value="$PROJECT_DIR$/ui/home" />
             <option value="$PROJECT_DIR$/ui/homenavigator" />
             <option value="$PROJECT_DIR$/ui/login" />
+            <option value="$PROJECT_DIR$/ui/notifications" />
             <option value="$PROJECT_DIR$/ui/profile" />
             <option value="$PROJECT_DIR$/ui/schedule" />
           </set>
