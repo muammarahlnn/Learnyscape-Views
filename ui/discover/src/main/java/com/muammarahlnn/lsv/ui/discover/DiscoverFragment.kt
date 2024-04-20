@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.muammarahlnn.lsv.core.model.AvailableClassModel
+import com.muammarahlnn.lsv.core.navigation.getRootNavController
+import com.muammarahlnn.lsv.core.navigation.navigateToPendingRequest
 import com.muammarahlnn.lsv.core.ui.dialog.BaseDialog
 import com.muammarahlnn.lsv.core.ui.dialog.LoadingDialog
-import com.muammarahlnn.lsv.core.ui.ext.  hide
+import com.muammarahlnn.lsv.core.ui.ext.hide
 import com.muammarahlnn.lsv.core.ui.ext.readText
 import com.muammarahlnn.lsv.core.ui.ext.show
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
@@ -55,6 +57,12 @@ internal class DiscoverFragment : BaseFragment<ScreenDiscoverBinding, DiscoverVi
     private fun setupView() {
         viewBinding.searchBar.etSearch.also { view ->
             view.hint = readText(R.string.search_hint)
+        }
+
+        viewBinding.toolbar.icPendingRequests.also { view ->
+            view.setOnClickListener {
+                requireActivity().getRootNavController().navigateToPendingRequest()
+            }
         }
     }
 

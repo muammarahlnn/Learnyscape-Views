@@ -10,6 +10,7 @@ import com.muammarahlnn.lsv.databinding.ActivityMainBinding
 import com.muammarahlnn.lsv.domain.login.IsUserLoggedInUseCase
 import com.muammarahlnn.lsv.ui.homenavigator.navigation.homeNavigatorFragment
 import com.muammarahlnn.lsv.ui.login.screen.navigation.loginFragment
+import com.muammarahlnn.lsv.ui.pendingrequest.navigation.pendingRequestFragment
 import com.muammarahlnn.ui.lsv.notifications.navigation.notificationsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             loginFragment()
             homeNavigatorFragment()
             notificationsFragment()
+            pendingRequestFragment()
         }
     }
 }

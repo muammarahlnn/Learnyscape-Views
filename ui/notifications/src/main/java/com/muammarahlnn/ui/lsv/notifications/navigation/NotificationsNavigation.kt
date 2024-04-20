@@ -11,6 +11,6 @@ import com.muammarahlnn.ui.lsv.notifications.NotificationsFragment
  */
 fun NavGraphBuilder.notificationsFragment() {
     fragment<NotificationsFragment>(NOTIFICATIONS_ROUTE) {
-        label = "Login"
+        label = "notifications"
     }
 }

@@ -43,6 +43,7 @@ dependencies {
     implementation(project(":ui:login"))
     implementation(project(":ui:homenavigator"))
     implementation(project(":ui:notifications"))
+    implementation(project(":ui:pendingrequest"))
 
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
