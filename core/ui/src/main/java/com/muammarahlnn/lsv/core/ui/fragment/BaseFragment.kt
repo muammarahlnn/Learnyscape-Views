@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
@@ -22,6 +23,9 @@ import kotlinx.coroutines.launch
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel<S>, S> : Fragment() {
 
     protected abstract val viewModel: VM
+
+    protected val navController: NavController
+        get() = findNavController()
 
     private var _viewBinding: VB? = null
 

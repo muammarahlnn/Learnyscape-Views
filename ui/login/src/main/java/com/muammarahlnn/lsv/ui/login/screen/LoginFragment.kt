@@ -6,7 +6,6 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.muammarahlnn.lsv.core.navigation.navigateToHomeNavigator
 import com.muammarahlnn.lsv.core.ui.ext.hideSoftKeyboard
 import com.muammarahlnn.lsv.core.ui.ext.readDrawable
@@ -70,7 +69,7 @@ internal class LoginFragment : BaseFragment<ScreenLoginBinding, LoginViewModel, 
     }
 
     private fun renderSuccessState() {
-        navigateToHome()
+        navController.navigateToHomeNavigator()
     }
 
     private fun renderNormalState() {
@@ -81,9 +80,5 @@ internal class LoginFragment : BaseFragment<ScreenLoginBinding, LoginViewModel, 
             btnLoginLoading.visibility = GONE
             btnLoginText.visibility = VISIBLE
         }
-    }
-
-    private fun navigateToHome() {
-        findNavController().navigateToHomeNavigator()
     }
 }
