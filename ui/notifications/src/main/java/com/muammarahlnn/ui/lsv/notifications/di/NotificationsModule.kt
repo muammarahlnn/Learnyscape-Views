@@ -16,5 +16,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object NotificationsModule {
 
     @Provides
-    fun providesUiState(): NotificationsUiState = NotificationsUiState.Loading
+    fun providesUiState(): NotificationsUiState = NotificationsUiState.OnFetchNotifications(true)
 }

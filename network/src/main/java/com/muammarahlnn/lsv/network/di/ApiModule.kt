@@ -7,6 +7,7 @@ import com.muammarahlnn.lsv.network.di.AuthQualifiers.DEFAULT
 import com.muammarahlnn.lsv.network.discover.DiscoverApi
 import com.muammarahlnn.lsv.network.home.HomeApi
 import com.muammarahlnn.lsv.network.login.LoginApi
+import com.muammarahlnn.lsv.network.notifications.NotificationsApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -49,6 +50,13 @@ object ApiModule {
         networkJson: Json,
         @Auth(BEARER_TOKEN) client: OkHttpClient,
     ): DiscoverApi = buildRetrofit(networkJson, client).create(DiscoverApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesNotificationsApi(
+        networkJson: Json,
+        @Auth(BEARER_TOKEN) client: OkHttpClient,
+    ): NotificationsApi = buildRetrofit(networkJson, client).create(NotificationsApi::class.java)
 }
 
 private fun buildRetrofit(
