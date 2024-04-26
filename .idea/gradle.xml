@@ -35,6 +35,7 @@
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/ui" />
+            <option value="$PROJECT_DIR$/ui/classnavigator" />
             <option value="$PROJECT_DIR$/ui/discover" />
             <option value="$PROJECT_DIR$/ui/home" />
             <option value="$PROJECT_DIR$/ui/homenavigator" />
