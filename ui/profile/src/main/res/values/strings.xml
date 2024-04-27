@@ -9,4 +9,5 @@
     <string name="icon_change_password_desc">Icon Change Password</string>
     <string name="change_password">Change Password</string>
     <string name="log_out">Log out</string>
+    <string name="change_photo_profile_button_desc">Change photo profile button</string>
 </resources>

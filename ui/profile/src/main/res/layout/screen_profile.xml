@@ -120,6 +120,18 @@
         app:strokeColor="@color/white_light_gray"
         app:strokeWidth="1dp" />
 
+    <ImageView
+        android:id="@+id/btnChangePhotoProfile"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:elevation="2dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_photo_camera"
+        android:background="@drawable/bg_red_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView"
+        app:layout_constraintEnd_toEndOf="@+id/shapeableImageView"
+        android:contentDescription="@string/change_photo_profile_button_desc" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView2"
         style="@style/BaseCardView"
