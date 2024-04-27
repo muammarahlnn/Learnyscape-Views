@@ -40,4 +40,15 @@
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
 
+    <style name="CircleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="BaseCardView" parent="Widget.Material3.CardView.Elevated">
+        <item name="elevation">2dp</item>
+        <item name="strokeWidth">@null</item>
+        <item name="cardCornerRadius">8dp</item>
+    </style>
+    
  </resources>
