@@ -1,6 +1,6 @@
 package com.muammarahlnn.lsv.ui.profile.di
 
-import com.muammarahlnn.lsv.ui.profile.ProfileState
+import com.muammarahlnn.lsv.ui.profile.ProfileUiState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object ProfileModule {
 
     @Provides
-    fun providesState(): ProfileState = ProfileState()
+    fun providesState(): ProfileUiState = ProfileUiState.None
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.muammarahlnn.lsv.core.model.UserModel
 import com.muammarahlnn.lsv.core.navigation.getRootNavController
 import com.muammarahlnn.lsv.core.navigation.navigateToLogin
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
@@ -15,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * @File ProfileUi, 19/03/2024 02.38
  */
 @AndroidEntryPoint
-internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewModel, ProfileState>( ){
+internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewModel, ProfileUiState>( ){
 
     override val viewModel: ProfileViewModel by viewModels()
 
@@ -24,11 +25,33 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
     }
 
     override suspend fun onViewLoaded(savedInstanceState: Bundle?) {
-        viewBinding.textView.setOnClickListener {
-            viewModel.userLogout()
-            requireActivity().getRootNavController().navigateToLogin()
+        setupView()
+        if (savedInstanceState == null) {
+            viewModel.getCurrentUser()
         }
     }
 
-    override fun renderState(state: ProfileState) {}
+    override fun renderState(state: ProfileUiState) {
+        when (state) {
+            ProfileUiState.None -> Unit
+            is ProfileUiState.OnGetCurrentUser ->
+                renderGetCurrentUserState(state.user)
+        }
+    }
+
+    private fun setupView() {
+        viewBinding.btnLogout.also { button ->
+            button.setOnClickListener {
+                viewModel.userLogout()
+                requireActivity().getRootNavController().navigateToLogin()
+            }
+        }
+    }
+
+    private fun renderGetCurrentUserState(user: UserModel) {
+        with(viewBinding) {
+            tvName.text = user.fullName
+            tvUsername.text = user.username
+        }
+    }
 }

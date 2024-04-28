@@ -65,7 +65,7 @@
                 app:layout_constraintTop_toBottomOf="@id/icInfo" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tvName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_text_view"
@@ -87,9 +87,10 @@
                 android:text="@string/nim"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
             <TextView
+                android:id="@+id/tvUsername"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_text_view"
@@ -175,6 +176,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btnLogout"
         style="@style/BaseCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
