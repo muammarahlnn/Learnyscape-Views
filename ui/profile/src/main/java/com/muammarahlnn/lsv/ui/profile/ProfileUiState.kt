@@ -1,5 +1,6 @@
 package com.muammarahlnn.lsv.ui.profile
 
+import android.graphics.Bitmap
 import com.muammarahlnn.lsv.core.model.UserModel
 
 /**
@@ -11,4 +12,6 @@ internal sealed interface ProfileUiState {
     data object None : ProfileUiState
 
     data class OnGetCurrentUser(val user: UserModel) : ProfileUiState
+
+    data class OnFetchProfilePic(val profilePic: Bitmap?) : ProfileUiState
 }

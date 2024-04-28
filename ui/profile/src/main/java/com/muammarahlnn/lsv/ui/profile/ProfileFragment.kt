@@ -1,5 +1,6 @@
 package com.muammarahlnn.lsv.ui.profile
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -28,14 +29,19 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
         setupView()
         if (savedInstanceState == null) {
             viewModel.getCurrentUser()
+            viewModel.fetchProfilePic()
         }
     }
 
     override fun renderState(state: ProfileUiState) {
         when (state) {
             ProfileUiState.None -> Unit
+
             is ProfileUiState.OnGetCurrentUser ->
-                renderGetCurrentUserState(state.user)
+                renderOnGetCurrentUserState(state.user)
+
+            is ProfileUiState.OnFetchProfilePic ->
+                renderOnFetchProfilePic(state.profilePic)
         }
     }
 
@@ -48,10 +54,16 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
         }
     }
 
-    private fun renderGetCurrentUserState(user: UserModel) {
+    private fun renderOnGetCurrentUserState(user: UserModel) {
         with(viewBinding) {
             tvName.text = user.fullName
             tvUsername.text = user.username
+        }
+    }
+
+    private fun renderOnFetchProfilePic(profilePic: Bitmap?) {
+        viewBinding.ivProfilePic.also { view ->
+            profilePic?.let { view.setImageBitmap(it) }
         }
     }
 }
