@@ -8,6 +8,7 @@ import com.muammarahlnn.lsv.core.navigation.HOME_NAVIGATOR_ROUTE
 import com.muammarahlnn.lsv.core.navigation.LOGIN_ROUTE
 import com.muammarahlnn.lsv.databinding.ActivityMainBinding
 import com.muammarahlnn.lsv.domain.login.IsUserLoggedInUseCase
+import com.muammarahlnn.lsv.ui.changepassword.navigation.changePasswordFragment
 import com.muammarahlnn.lsv.ui.homenavigator.navigation.homeNavigatorFragment
 import com.muammarahlnn.lsv.ui.login.screen.navigation.loginFragment
 import com.muammarahlnn.lsv.ui.pendingrequest.navigation.pendingRequestFragment
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             homeNavigatorFragment()
             notificationsFragment()
             pendingRequestFragment()
+            changePasswordFragment()
         }
     }
 }

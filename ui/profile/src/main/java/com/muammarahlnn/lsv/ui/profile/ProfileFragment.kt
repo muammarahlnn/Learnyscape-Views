@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.muammarahlnn.lsv.core.model.UserModel
 import com.muammarahlnn.lsv.core.navigation.getRootNavController
+import com.muammarahlnn.lsv.core.navigation.navigateToChangePassword
 import com.muammarahlnn.lsv.core.navigation.navigateToLogin
 import com.muammarahlnn.lsv.core.ui.dialog.BaseDialog
 import com.muammarahlnn.lsv.core.ui.ext.hide
@@ -60,6 +61,12 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
         viewBinding.btnLogout.also { button ->
             button.setOnClickListener {
                 showLogoutDialog()
+            }
+        }
+
+        viewBinding.btnChangePassword.also { button ->
+            button.setOnClickListener {
+                requireActivity().getRootNavController().navigateToChangePassword()
             }
         }
     }
