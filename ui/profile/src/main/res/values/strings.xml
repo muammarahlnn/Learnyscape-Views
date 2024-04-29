@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="profile">Profile</string>
-    <string name="logout">Logout</string>
     <string name="student_data">Student Data</string>
     <string name="name">Name</string>
     <string name="nim">NIM</string>
@@ -9,5 +8,7 @@
     <string name="icon_change_password_desc">Icon Change Password</string>
     <string name="change_password">Change Password</string>
     <string name="log_out">Log out</string>
+    <string name="log_out_dialog_message">Are you sure want to log out?</string>
+    <string name="log_out_dialog_negative_text">Cancel</string>
     <string name="change_photo_profile_button_desc">Change photo profile button</string>
 </resources>

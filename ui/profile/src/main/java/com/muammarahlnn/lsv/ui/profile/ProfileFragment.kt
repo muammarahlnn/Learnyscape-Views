@@ -8,9 +8,11 @@ import androidx.fragment.app.viewModels
 import com.muammarahlnn.lsv.core.model.UserModel
 import com.muammarahlnn.lsv.core.navigation.getRootNavController
 import com.muammarahlnn.lsv.core.navigation.navigateToLogin
+import com.muammarahlnn.lsv.core.ui.dialog.BaseDialog
 import com.muammarahlnn.lsv.core.ui.ext.hide
 import com.muammarahlnn.lsv.core.ui.ext.invisible
 import com.muammarahlnn.lsv.core.ui.ext.readDrawable
+import com.muammarahlnn.lsv.core.ui.ext.readText
 import com.muammarahlnn.lsv.core.ui.ext.show
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
 import com.muammarahlnn.lsv.ui.profile.databinding.ScreenProfileBinding
@@ -57,8 +59,7 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
     private fun setupView() {
         viewBinding.btnLogout.also { button ->
             button.setOnClickListener {
-                viewModel.userLogout()
-                requireActivity().getRootNavController().navigateToLogin()
+                showLogoutDialog()
             }
         }
     }
@@ -87,5 +88,21 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
                 else setImageDrawable(readDrawable(uiR.drawable.dummy_photo_profile))
             }
         }
+    }
+
+    private fun showLogoutDialog() {
+        BaseDialog(
+            title = readText(R.string.log_out),
+            message = readText(R.string.log_out_dialog_message),
+            positiveText = readText(R.string.log_out),
+            negativeText = readText(R.string.log_out_dialog_negative_text),
+            onPositiveClick = { dialog ->
+                viewModel.userLogout()
+                requireActivity().getRootNavController().navigateToLogin()
+
+                dialog.dismiss()
+            },
+            onNegativeClick = { dialog -> dialog.dismiss() }
+        ).show(activity?.supportFragmentManager)
     }
 }
