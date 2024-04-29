@@ -2,6 +2,7 @@ package com.muammarahlnn.lsv.core.ui.ext
 
 import android.view.View
 import android.view.View.GONE
+import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 
 /**
@@ -14,4 +15,8 @@ fun View.show() {
 
 fun View.hide() {
     visibility = GONE
+}
+
+fun View.invisible() {
+    visibility = INVISIBLE
 }

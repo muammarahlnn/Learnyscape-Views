@@ -43,9 +43,14 @@ internal class ProfileViewModel @Inject constructor(
         getProfilePicUseCase.execute(
             params = Unit,
             coroutineScope = viewModelScope,
+            onStart = {
+                updateState {
+                    ProfileUiState.OnLoadingFetchProfilePic
+                }
+            },
             onSuccess = { profilePic ->
                 updateState {
-                    ProfileUiState.OnFetchProfilePic(profilePic)
+                    ProfileUiState.OnSuccessFetchProfilePic(profilePic)
                 }
             }
         )

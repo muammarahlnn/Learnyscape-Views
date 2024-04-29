@@ -13,5 +13,7 @@ internal sealed interface ProfileUiState {
 
     data class OnGetCurrentUser(val user: UserModel) : ProfileUiState
 
-    data class OnFetchProfilePic(val profilePic: Bitmap?) : ProfileUiState
+    data object OnLoadingFetchProfilePic : ProfileUiState
+
+    data class OnSuccessFetchProfilePic(val profilePic: Bitmap?) : ProfileUiState
 }

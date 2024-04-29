@@ -8,9 +8,14 @@ import androidx.fragment.app.viewModels
 import com.muammarahlnn.lsv.core.model.UserModel
 import com.muammarahlnn.lsv.core.navigation.getRootNavController
 import com.muammarahlnn.lsv.core.navigation.navigateToLogin
+import com.muammarahlnn.lsv.core.ui.ext.hide
+import com.muammarahlnn.lsv.core.ui.ext.invisible
+import com.muammarahlnn.lsv.core.ui.ext.readDrawable
+import com.muammarahlnn.lsv.core.ui.ext.show
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
 import com.muammarahlnn.lsv.ui.profile.databinding.ScreenProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
+import com.muammarahlnn.lsv.core.ui.R as uiR
 
 /**
  * @Author Muammar Ahlan Abimanyu
@@ -40,8 +45,12 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
             is ProfileUiState.OnGetCurrentUser ->
                 renderOnGetCurrentUserState(state.user)
 
-            is ProfileUiState.OnFetchProfilePic ->
+            ProfileUiState.OnLoadingFetchProfilePic ->
+                renderOnLoadingFetchProfilePic()
+
+            is ProfileUiState.OnSuccessFetchProfilePic ->
                 renderOnFetchProfilePic(state.profilePic)
+
         }
     }
 
@@ -61,9 +70,22 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
         }
     }
 
+    private fun renderOnLoadingFetchProfilePic() {
+        with(viewBinding) {
+            ivProfilePic.invisible()
+            loadingProfilePic.root.show()
+        }
+    }
+
     private fun renderOnFetchProfilePic(profilePic: Bitmap?) {
-        viewBinding.ivProfilePic.also { view ->
-            profilePic?.let { view.setImageBitmap(it) }
+        with(viewBinding) {
+            loadingProfilePic.root.hide()
+
+            ivProfilePic.apply {
+                show()
+                if (profilePic != null) setImageBitmap(profilePic)
+                else setImageDrawable(readDrawable(uiR.drawable.dummy_photo_profile))
+            }
         }
     }
 }
