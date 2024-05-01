@@ -7,4 +7,14 @@ package com.muammarahlnn.lsv.ui.changepassword
 internal sealed interface ChangePasswordUiState {
 
     data object None : ChangePasswordUiState
+
+    data object OnConfirmNewPasswordNotSame : ChangePasswordUiState
+
+    data object OnLoadingChangePassword : ChangePasswordUiState
+
+    data object OnSuccessChangePassword : ChangePasswordUiState
+
+    data class OnErrorChangePassword(val message: String) : ChangePasswordUiState
+
+    data object OnCompletionChangePassword : ChangePasswordUiState
 }
