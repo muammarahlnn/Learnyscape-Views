@@ -1,10 +1,13 @@
 package com.muammarahlnn.lsv.core.ui.ext
 
+import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
+import androidx.annotation.FontRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -24,6 +27,9 @@ fun Fragment.readText(@StringRes resId: Int, vararg formatArgs: Any): String =
 
 fun Fragment.readColor(@ColorRes resId: Int): Int =
     requireContext().readColor(resId)
+
+fun Fragment.readFont(@FontRes resId: Int): Typeface? =
+    ResourcesCompat.getFont(requireContext(), resId)
 
 fun Fragment.findNavController(@IdRes id: Int): NavController {
     var parent = parentFragment

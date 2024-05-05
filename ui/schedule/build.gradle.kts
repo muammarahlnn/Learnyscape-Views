@@ -8,4 +8,5 @@ android {
 
 dependencies {
     implementation(libs.material)
+    implementation(libs.kotlinx.datetime)
 }
