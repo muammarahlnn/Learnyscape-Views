@@ -15,10 +15,10 @@ import androidx.constraintlayout.widget.ConstraintSet.PARENT_ID
 import androidx.constraintlayout.widget.ConstraintSet.START
 import androidx.constraintlayout.widget.ConstraintSet.TOP
 import androidx.constraintlayout.widget.Guideline
+import com.muammarahlnn.lsv.core.model.ScheduleModel
 import com.muammarahlnn.lsv.core.ui.ext.dpToPx
 import com.muammarahlnn.lsv.core.ui.ext.readColor
 import com.muammarahlnn.lsv.core.ui.ext.readFont
-import com.muammarahlnn.lsv.ui.schedule.ScheduleModel
 import kotlinx.datetime.LocalTime
 import com.muammarahlnn.lsv.core.ui.R as uiR
 
@@ -34,23 +34,7 @@ class ScheduleCalendarView @JvmOverloads constructor(
 
     private val constraintSet: ConstraintSet by lazy { ConstraintSet() }
 
-    private val schedules = listOf(
-        ScheduleModel(
-            className = "Pemrograman Mobile A",
-            startTime = LocalTime(hour = 8, minute = 0),
-            endTime = LocalTime(hour = 9, minute = 30),
-        ),
-        ScheduleModel(
-            className = "Pemrograman Dasar A",
-            startTime = LocalTime(hour = 10, minute = 30),
-            endTime = LocalTime(hour = 12, minute = 10),
-        ),
-        ScheduleModel(
-            className = "Machine Learning B",
-            startTime = LocalTime(hour = 15, minute = 40),
-            endTime = LocalTime(hour = 17, minute = 45),
-        ),
-    )
+    private val schedules = mutableListOf<ScheduleModel>()
 
     private val hourTextViewMap = mutableMapOf<Int, TextView>()
 
@@ -60,7 +44,6 @@ class ScheduleCalendarView @JvmOverloads constructor(
 
     private fun createView() {
         createScheduleHours()
-        createScheduleCards()
     }
 
     private fun createScheduleHours() {
@@ -105,7 +88,18 @@ class ScheduleCalendarView @JvmOverloads constructor(
         }
     }
 
-    private fun createScheduleCards() {
+    fun setupSchedules(
+        schedules: List<ScheduleModel>,
+        onScheduleClickListener: (String) -> Unit,
+    ) {
+        this.schedules.apply {
+            clear()
+            addAll(schedules)
+        }
+        createScheduleCards(onScheduleClickListener)
+    }
+
+    private fun createScheduleCards(onScheduleClickListener: (String) -> Unit) {
         val guideline = Guideline(context).apply {
             id = Guideline.generateViewId()
             layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
@@ -132,6 +126,7 @@ class ScheduleCalendarView @JvmOverloads constructor(
                     marginStart = dpToPx(16)
                 }
                 setSchedule(schedule)
+                setOnScheduleClickListener(onScheduleClickListener)
             }
             addView(scheduleCard)
         }

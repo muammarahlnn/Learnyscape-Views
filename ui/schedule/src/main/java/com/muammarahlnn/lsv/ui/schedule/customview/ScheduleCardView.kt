@@ -13,10 +13,10 @@ import androidx.constraintlayout.widget.ConstraintSet.PARENT_ID
 import androidx.constraintlayout.widget.ConstraintSet.START
 import androidx.constraintlayout.widget.ConstraintSet.TOP
 import com.google.android.material.card.MaterialCardView
+import com.muammarahlnn.lsv.core.model.ScheduleModel
 import com.muammarahlnn.lsv.core.ui.ext.dpToPx
 import com.muammarahlnn.lsv.core.ui.ext.readColor
 import com.muammarahlnn.lsv.core.ui.ext.readFont
-import com.muammarahlnn.lsv.ui.schedule.ScheduleModel
 import kotlinx.datetime.LocalTime
 import com.muammarahlnn.lsv.core.ui.R as uiR
 
@@ -94,6 +94,14 @@ class ScheduleCardView @JvmOverloads constructor(
     fun setSchedule(schedule: ScheduleModel) {
         this.schedule = schedule
         updateData()
+    }
+
+    fun setOnScheduleClickListener(listener: (className: String) -> Unit) {
+        if (::schedule.isInitialized) {
+            setOnClickListener {
+                listener(schedule.className)
+            }
+        }
     }
 
     private fun updateData() {

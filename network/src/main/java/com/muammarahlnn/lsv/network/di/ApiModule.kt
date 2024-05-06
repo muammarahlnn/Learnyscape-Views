@@ -11,6 +11,7 @@ import com.muammarahlnn.lsv.network.login.LoginApi
 import com.muammarahlnn.lsv.network.notifications.NotificationsApi
 import com.muammarahlnn.lsv.network.pendingrequest.PendingRequestApi
 import com.muammarahlnn.lsv.network.profile.ProfileApi
+import com.muammarahlnn.lsv.network.schedule.ScheduleApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -81,6 +82,13 @@ object ApiModule {
         networkJson: Json,
         @Auth(BEARER_TOKEN) client: OkHttpClient,
     ): ChangePasswordApi = buildRetrofit(networkJson, client).create(ChangePasswordApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesScheduleApi(
+        networkJson: Json,
+        @Auth(BEARER_TOKEN) client: OkHttpClient,
+    ): ScheduleApi = buildRetrofit(networkJson, client).create(ScheduleApi::class.java)
 }
 
 private fun buildRetrofit(

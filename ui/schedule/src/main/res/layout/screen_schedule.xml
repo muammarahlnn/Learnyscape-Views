@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content"
@@ -50,10 +51,36 @@
 
         </LinearLayout>
 
-        <com.muammarahlnn.lsv.ui.schedule.customview.ScheduleCalendarView
+        <include
+            android:id="@+id/shimmerLoading"
+            layout="@layout/shimmer_schedule"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/llCalendarHeader"/>
+            app:layout_constraintTop_toBottomOf="@+id/llCalendarHeader" />
+
+        <include
+            android:id="@+id/emptyState"
+            layout="@layout/empty_screen"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llCalendarHeader" />
+
+        <include
+            android:id="@+id/errorState"
+            layout="@layout/error_screen"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/llCalendarHeader" />
+
+        <com.muammarahlnn.lsv.ui.schedule.customview.ScheduleCalendarView
+            android:id="@+id/scheduleCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/llCalendarHeader" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

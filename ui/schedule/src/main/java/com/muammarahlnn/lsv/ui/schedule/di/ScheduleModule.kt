@@ -1,6 +1,6 @@
 package com.muammarahlnn.lsv.ui.schedule.di
 
-import com.muammarahlnn.lsv.ui.schedule.ScheduleState
+import com.muammarahlnn.lsv.ui.schedule.ScheduleUiState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object ScheduleModule {
 
     @Provides
-    fun providesState(): ScheduleState = ScheduleState()
+    fun providesState(): ScheduleUiState = ScheduleUiState.Loading(true)
 }

@@ -1,7 +1,9 @@
 package com.muammarahlnn.lsv.ui.schedule
 
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewModelScope
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
+import com.muammarahlnn.lsv.domain.schedule.GetSchedulesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -11,6 +13,30 @@ import javax.inject.Inject
  */
 @HiltViewModel
 internal class ScheduleViewModel @Inject constructor(
-    initialState: ScheduleState,
+    private val getSchedulesUseCase: GetSchedulesUseCase,
+    initialState: ScheduleUiState,
     savedStateHandle: SavedStateHandle,
-) : BaseViewModel<ScheduleState>(initialState, savedStateHandle)
+) : BaseViewModel<ScheduleUiState>(initialState, savedStateHandle) {
+
+    fun fetchSchedules() {
+        getSchedulesUseCase.execute(
+            params = Unit,
+            coroutineScope = viewModelScope,
+            onStart = {
+                updateState { ScheduleUiState.Loading(true) }
+            },
+            onSuccess = { schedules ->
+                updateState {
+                    if (schedules.isNotEmpty()) ScheduleUiState.Success(schedules)
+                    else ScheduleUiState.SuccessEmpty
+                }
+            },
+            onError = { throwable ->
+                updateState { ScheduleUiState.Error(throwable.message.toString()) }
+            },
+            onCompletion = {
+                updateState { ScheduleUiState.Loading(false) }
+            }
+        )
+    }
+}

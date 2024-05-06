@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="icon_back_desc">Back button</string>
+    <string name="empty_illustration">Empty illustration</string>
+    <string name="empty_screen_desc">Currently there are no data</string>
+    <string name="error_screen_desc">Something went wrong, please try again</string>
 </resources>
