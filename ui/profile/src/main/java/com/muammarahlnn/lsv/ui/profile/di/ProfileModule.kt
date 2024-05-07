@@ -1,6 +1,7 @@
 package com.muammarahlnn.lsv.ui.profile.di
 
 import com.muammarahlnn.lsv.ui.profile.ProfileUiState
+import com.muammarahlnn.lsv.ui.profile.sheet.ChangePhotoProfileState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,4 +18,7 @@ internal object ProfileModule {
 
     @Provides
     fun providesState(): ProfileUiState = ProfileUiState.None
+
+    @Provides
+    fun providesChangePhotoProfileState(): ChangePhotoProfileState = ChangePhotoProfileState()
 }

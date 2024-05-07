@@ -11,4 +11,6 @@
     <string name="log_out_dialog_message">Are you sure want to log out?</string>
     <string name="log_out_dialog_negative_text">Cancel</string>
     <string name="change_photo_profile_button_desc">Change photo profile button</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
 </resources>

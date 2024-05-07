@@ -26,7 +26,7 @@ import com.muammarahlnn.lsv.core.ui.R as uiR
  * @Author Muammar Ahlan Abimanyu
  * @File BaseSheet, 17/03/2024 01.34
  */
-abstract class BaseSheet<VB: ViewBinding, VM: BaseViewModel<*>> : BottomSheetDialogFragment() {
+abstract class BaseSheet<VB: ViewBinding, VM: BaseViewModel<S>, S> : BottomSheetDialogFragment() {
 
     abstract val fullHeight: Boolean
 

@@ -17,6 +17,7 @@ import com.muammarahlnn.lsv.core.ui.ext.readText
 import com.muammarahlnn.lsv.core.ui.ext.show
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
 import com.muammarahlnn.lsv.ui.profile.databinding.ScreenProfileBinding
+import com.muammarahlnn.lsv.ui.profile.sheet.ChangePhotoProfileSheet
 import dagger.hilt.android.AndroidEntryPoint
 import com.muammarahlnn.lsv.core.ui.R as uiR
 
@@ -58,6 +59,12 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
     }
 
     private fun setupView() {
+        viewBinding.btnChangePhotoProfile.also { button ->
+            button.setOnClickListener {
+                showChangePhotoProfileBottomSheet()
+            }
+        }
+
         viewBinding.btnLogout.also { button ->
             button.setOnClickListener {
                 showLogoutDialog()
@@ -111,5 +118,11 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
             },
             onNegativeClick = { dialog -> dialog.dismiss() }
         ).show(activity?.supportFragmentManager)
+    }
+
+    private fun showChangePhotoProfileBottomSheet() {
+        ChangePhotoProfileSheet().also { sheet ->
+            sheet.show(activity?.supportFragmentManager)
+        }
     }
 }
