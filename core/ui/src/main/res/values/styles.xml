@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
- <resources>
+ <resources xmlns:tools="http://schemas.android.com/tools">
 
      <!-- Base Sheet theme. -->
-     <style name="BottomSheetDialogTheme" parent="Theme.Material3.DayNight.BottomSheetDialog">
+     <style name="BottomSheetDialogTheme" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
          <item name="bottomSheetStyle">@style/BottomSheetTheme</item>
 
          <!-- Base color -->
@@ -13,7 +13,7 @@
 
          <!-- Window system -->
          <item name="android:navigationBarColor">@color/white</item>
-         <item name="android:statusBarColor">@android:color/transparent</item>
+         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
          <item name="android:windowIsFloating">false</item>
      </style>
 

@@ -33,7 +33,7 @@ internal class ChangePhotoProfileSheet :
     }
 
     private fun setupView() {
-        viewBinding.llCamera.also { view ->
+        viewBinding.ivCamera.also { view ->
             view.setOnClickListener {
                 Toast.makeText(context, "Camera clicked", Toast.LENGTH_SHORT).show()
             }
