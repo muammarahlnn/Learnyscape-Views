@@ -3,10 +3,12 @@ package com.muammarahlnn.lsv.ui.profile
 import androidx.lifecycle.viewModelScope
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
 import com.muammarahlnn.lsv.domain.base.execute
+import com.muammarahlnn.lsv.domain.profile.ChangeProfilePicUseCase
 import com.muammarahlnn.lsv.domain.profile.GetCurrentUserUseCase
 import com.muammarahlnn.lsv.domain.profile.GetProfilePicUseCase
 import com.muammarahlnn.lsv.domain.profile.UserLogoutUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.io.File
 import javax.inject.Inject
 
 /**
@@ -18,6 +20,7 @@ internal class ProfileViewModel @Inject constructor(
     private val userLogoutUseCase: UserLogoutUseCase,
     private val getCurrentUserUseCase: GetCurrentUserUseCase,
     private val getProfilePicUseCase: GetProfilePicUseCase,
+    private val changeProfilePicUseCase: ChangeProfilePicUseCase,
     initialState: ProfileUiState,
 ) : BaseViewModel<ProfileUiState>(initialState) {
 
@@ -51,6 +54,23 @@ internal class ProfileViewModel @Inject constructor(
                     ProfileUiState.OnSuccessFetchProfilePic(profilePic)
                 }
             }
+        )
+    }
+
+    fun changeProfilePic(pic: File) {
+        changeProfilePicUseCase.execute(
+            params = ChangeProfilePicUseCase.Params(
+                pic = pic,
+            ),
+            coroutineScope = viewModelScope,
+            onStart = {
+                updateState {
+                    ProfileUiState.OnLoadingFetchProfilePic
+                }
+            },
+            onCompletion = {
+                fetchProfilePic()
+            },
         )
     }
 }

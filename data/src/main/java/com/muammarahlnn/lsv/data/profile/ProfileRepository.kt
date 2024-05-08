@@ -7,6 +7,7 @@ import com.muammarahlnn.lsv.datastore.LsvPreferencesDataSource
 import com.muammarahlnn.lsv.network.profile.ProfileNetworkDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import java.io.File
 import javax.inject.Inject
 
 /**
@@ -28,5 +29,10 @@ class ProfileRepository @Inject constructor(
 
     fun getProfilePic(): Flow<Bitmap?> =
         profileNetworkDataSource.getProfilePic()
+
+    fun changeProfilePic(pic: File): Flow<String> =
+        profileNetworkDataSource.postProfilePic(pic).map {
+            it.name
+        }
 
 }
