@@ -1,6 +1,5 @@
 package com.muammarahlnn.lsv.ui.discover
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.muammarahlnn.lsv.core.model.AvailableClassModel
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
@@ -20,8 +19,7 @@ internal class DiscoverViewModel @Inject constructor(
     private val requestJoinClassUseCase: RequestJoinClassUseCase,
     private val cancelRequestJoinClassUseCase: CancelRequestJoinClassUseCase,
     initialState: DiscoverUiState,
-    savedStateHandle: SavedStateHandle,
-) : BaseViewModel<DiscoverUiState>(initialState, savedStateHandle) {
+) : BaseViewModel<DiscoverUiState>(initialState) {
 
     fun fetchAvailableClasses() {
         getAvailableClassesUseCase.execute(

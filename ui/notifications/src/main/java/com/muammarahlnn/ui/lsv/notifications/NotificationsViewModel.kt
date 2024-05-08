@@ -15,8 +15,7 @@ import javax.inject.Inject
 internal class NotificationsViewModel @Inject constructor(
     private val getNotificationsUseCase: GetNotificationsUseCase,
     initialState: NotificationsUiState,
-    savedStateHandle: SavedStateHandle,
-) : BaseViewModel<NotificationsUiState>(initialState, savedStateHandle) {
+) : BaseViewModel<NotificationsUiState>(initialState) {
 
     fun fetchNotifications() {
         getNotificationsUseCase.execute(

@@ -18,8 +18,7 @@ internal class PendingRequestViewModel @Inject constructor(
     private val getStudentPendingRequestsUseCase: GetStudentPendingRequestsUseCase,
     private val cancelRequestJoinClassUseCase: CancelRequestJoinClassUseCase,
     initialState: PendingRequestUiState,
-    savedStateHandle: SavedStateHandle,
-) : BaseViewModel<PendingRequestUiState>(initialState, savedStateHandle) {
+) : BaseViewModel<PendingRequestUiState>(initialState) {
 
     fun fetchPendingRequests() {
         getStudentPendingRequestsUseCase.execute(

@@ -1,6 +1,5 @@
 package com.muammarahlnn.lsv.ui.changepassword
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
 import com.muammarahlnn.lsv.domain.changepassword.ChangePasswordUseCase
@@ -15,8 +14,7 @@ import javax.inject.Inject
 internal class ChangePasswordViewModel @Inject constructor(
     private val changePasswordUseCase: ChangePasswordUseCase,
     initialState: ChangePasswordUiState,
-    savedStateHandle: SavedStateHandle,
-) : BaseViewModel<ChangePasswordUiState>(initialState, savedStateHandle) {
+) : BaseViewModel<ChangePasswordUiState>(initialState) {
 
     fun changePassword(
         oldPassword: String,

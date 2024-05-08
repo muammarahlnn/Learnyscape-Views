@@ -1,6 +1,5 @@
 package com.muammarahlnn.lsv.ui.home
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
 import com.muammarahlnn.lsv.domain.home.GetEnrolledClassesUseCase
@@ -15,8 +14,7 @@ import javax.inject.Inject
 internal class HomeViewModel @Inject constructor(
     private val getEnrolledClassesUseCase: GetEnrolledClassesUseCase,
     initialState: HomeUiState,
-    savedStateHandle: SavedStateHandle,
-) : BaseViewModel<HomeUiState>(initialState, savedStateHandle) {
+) : BaseViewModel<HomeUiState>(initialState) {
 
     fun fetchEnrolledClasses() {
         getEnrolledClassesUseCase.execute(

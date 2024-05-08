@@ -1,6 +1,5 @@
 package com.muammarahlnn.lsv.ui.profile
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
 import com.muammarahlnn.lsv.domain.base.execute
@@ -20,8 +19,7 @@ internal class ProfileViewModel @Inject constructor(
     private val getCurrentUserUseCase: GetCurrentUserUseCase,
     private val getProfilePicUseCase: GetProfilePicUseCase,
     initialState: ProfileUiState,
-    savedStateHandle: SavedStateHandle,
-) : BaseViewModel<ProfileUiState>(initialState, savedStateHandle) {
+) : BaseViewModel<ProfileUiState>(initialState) {
 
     fun userLogout() {
         userLogoutUseCase.execute(viewModelScope)

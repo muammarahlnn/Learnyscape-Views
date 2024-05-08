@@ -1,7 +1,6 @@
 package com.muammarahlnn.lsv.ui.login.screen
 
 import android.util.Log
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
 import com.muammarahlnn.lsv.domain.login.UserLoginUseCase
@@ -16,8 +15,7 @@ import javax.inject.Inject
 internal class LoginViewModel @Inject constructor(
     private val userLoginUseCase: UserLoginUseCase,
     initialState: LoginUiState,
-    savedStateHandle: SavedStateHandle,
-) : BaseViewModel<LoginUiState>(initialState, savedStateHandle) {
+) : BaseViewModel<LoginUiState>(initialState) {
 
     fun userLogin(
         username: String,

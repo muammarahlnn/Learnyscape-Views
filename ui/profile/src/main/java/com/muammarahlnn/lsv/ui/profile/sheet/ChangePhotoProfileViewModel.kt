@@ -1,6 +1,5 @@
 package com.muammarahlnn.lsv.ui.profile.sheet
 
-import androidx.lifecycle.SavedStateHandle
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -12,5 +11,4 @@ import javax.inject.Inject
 @HiltViewModel
 internal class ChangePhotoProfileViewModel @Inject constructor(
     initialState: ChangePhotoProfileState,
-    savedStateHandle: SavedStateHandle,
-) : BaseViewModel<ChangePhotoProfileState>(initialState, savedStateHandle)
+) : BaseViewModel<ChangePhotoProfileState>(initialState)

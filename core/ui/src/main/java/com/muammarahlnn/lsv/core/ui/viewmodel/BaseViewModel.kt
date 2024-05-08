@@ -2,9 +2,6 @@
 
 package com.muammarahlnn.lsv.core.ui.viewmodel
 
-import android.os.Bundle
-import androidx.core.os.bundleOf
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,17 +14,10 @@ import kotlinx.coroutines.flow.update
  */
 abstract class BaseViewModel<S>(
     initialState: S,
-    protected val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
-    private val key: String
-        get() = javaClass.name
+    private val _state = MutableStateFlow(initialState)
 
-    private val _state = MutableStateFlow(
-        (restoreState() ?: initialState).apply {
-            configureSavedStateProvider()
-        }
-    )
     val state: Flow<S>
         get() = _state.asStateFlow()
 
@@ -36,15 +26,5 @@ abstract class BaseViewModel<S>(
 
     protected fun updateState(reducer: S.() -> S) {
         _state.update(reducer)
-    }
-
-    private fun configureSavedStateProvider() {
-        savedStateHandle.setSavedStateProvider(key) {
-            bundleOf("state" to stateValue)
-        }
-    }
-
-    private fun restoreState(): S? = with(savedStateHandle.get<Bundle>(key)) {
-        this?.get("state") as? S
     }
 }

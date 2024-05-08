@@ -1,6 +1,5 @@
 package com.muammarahlnn.lsv.ui.schedule
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
 import com.muammarahlnn.lsv.domain.schedule.GetSchedulesUseCase
@@ -15,8 +14,7 @@ import javax.inject.Inject
 internal class ScheduleViewModel @Inject constructor(
     private val getSchedulesUseCase: GetSchedulesUseCase,
     initialState: ScheduleUiState,
-    savedStateHandle: SavedStateHandle,
-) : BaseViewModel<ScheduleUiState>(initialState, savedStateHandle) {
+) : BaseViewModel<ScheduleUiState>(initialState) {
 
     fun fetchSchedules() {
         getSchedulesUseCase.execute(
