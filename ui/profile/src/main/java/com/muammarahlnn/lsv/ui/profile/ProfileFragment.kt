@@ -124,7 +124,10 @@ internal class ProfileFragment : BaseFragment<ScreenProfileBinding, ProfileViewM
         ChangePhotoProfileSheet(
             onImagePicked = { imageFile ->
                 viewModel.changeProfilePic(imageFile)
-            }
+            },
+            onImageCaptured = { imageFile ->
+                viewModel.changeProfilePic(imageFile)
+            },
         ).also { sheet ->
             sheet.show(activity?.supportFragmentManager)
         }

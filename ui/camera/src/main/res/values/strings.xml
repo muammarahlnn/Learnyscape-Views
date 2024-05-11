@@ -1,0 +1,9 @@
+<resources>
+    <string name="btn_capture_desc">Capture button</string>
+    <string name="btn_switch_camera_desc">Switch camera button</string>
+    <string name="btn_flash_desc">Button flash</string>
+    <string name="btn_close_desc">Button close</string>
+    <string name="iv_captured_desc">Captured image</string>
+    <string name="iv_done_desc">Done button</string>
+    <string name="iv_cancel_desc">Cancel button</string>
+</resources>

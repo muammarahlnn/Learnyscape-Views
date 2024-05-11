@@ -7,6 +7,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":ui:camera"))
+
     implementation(libs.material)
     implementation(libs.facebook.shimmer)
 }
