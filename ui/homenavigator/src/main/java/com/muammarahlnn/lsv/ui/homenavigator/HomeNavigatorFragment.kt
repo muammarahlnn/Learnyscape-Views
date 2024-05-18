@@ -21,9 +21,9 @@ import com.muammarahlnn.lsv.core.navigation.navigateToSchedule
 import com.muammarahlnn.lsv.core.ui.ext.readColor
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
 import com.muammarahlnn.lsv.ui.discover.navigation.discoverFragment
-import com.muammarahlnn.lsv.ui.home.navigation.homeFragment
+import com.muammarahlnn.lsv.ui.home.navigation.homeFragmentt
 import com.muammarahlnn.lsv.ui.homenavigator.databinding.ScreenHomeNavigatorBinding
-import com.muammarahlnn.lsv.ui.profile.navigation.profileFragment
+import com.muammarahlnn.lsv.ui.profile.navigation.profileFragmentt
 import com.muammarahlnn.lsv.ui.schedule.navigation.scheduleFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.muammarahlnn.lsv.core.ui.R as uiR
@@ -53,17 +53,17 @@ internal class HomeNavigatorFragment : BaseFragment<ScreenHomeNavigatorBinding, 
     private fun setupView() {
         setStatusBarColorToRed()
 
-        val navController = requireActivity().findNavController(R.id.navHost)
+        val navController = requireActivity().findNavController(R.id.homeNavHost)
         navController.graph = navController.createGraph(
             startDestination = HOME_ROUTE
         ) {
-            homeFragment()
+            homeFragmentt()
             discoverFragment()
             scheduleFragment()
-            profileFragment()
+            profileFragmentt()
         }
 
-        viewBinding.navView.also { navView ->
+        viewBinding.homeNavView.also { navView ->
             navView.setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.navigationHome ->
@@ -86,7 +86,7 @@ internal class HomeNavigatorFragment : BaseFragment<ScreenHomeNavigatorBinding, 
         requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 navController.navigateUp()
-                viewBinding.navView.selectedItemId = when (navController.currentDestination?.route) {
+                viewBinding.homeNavView.selectedItemId = when (navController.currentDestination?.route) {
                     HOME_ROUTE -> R.id.navigationHome
                     DISCOVER_ROUTE -> R.id.navigationDiscover
                     SCHEDULE_ROUTE -> R.id.navigationSchedule

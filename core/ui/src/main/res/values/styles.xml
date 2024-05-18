@@ -50,5 +50,9 @@
         <item name="strokeWidth">@null</item>
         <item name="cardCornerRadius">8dp</item>
     </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/white_light_gray</item>
+    </style>
     
  </resources>

@@ -9,7 +9,7 @@ import com.muammarahlnn.lsv.ui.profile.ProfileFragment
  * @Author Muammar Ahlan Abimanyu
  * @File ProfileNavigation, 19/03/2024 03.53
  */
-fun NavGraphBuilder.profileFragment() {
+fun NavGraphBuilder.profileFragmentt() {
     fragment<ProfileFragment>(PROFILE_ROUTE) {
         label = "Profile"
     }

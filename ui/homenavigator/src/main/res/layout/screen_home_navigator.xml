@@ -6,18 +6,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/navHost"
+        android:id="@+id/homeNavHost"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@+id/navView"
+        app:layout_constraintBottom_toTopOf="@+id/homeNavView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navView"
+        android:id="@+id/homeNavView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:itemBackground="@color/white"
@@ -27,12 +27,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav_home_menu" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="16dp"
         android:background="@drawable/shadow"
-        app:layout_constraintBottom_toBottomOf="@+id/navHost"/>
+        app:layout_constraintBottom_toBottomOf="@+id/homeNavHost"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

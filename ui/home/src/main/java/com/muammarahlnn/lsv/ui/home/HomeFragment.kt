@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.muammarahlnn.lsv.core.model.EnrolledClassModel
 import com.muammarahlnn.lsv.core.navigation.getRootNavController
-import com.muammarahlnn.lsv.core.navigation.navigateToLogin
+import com.muammarahlnn.lsv.core.navigation.navigateToClassNavigator
 import com.muammarahlnn.lsv.core.navigation.navigateToNotifications
 import com.muammarahlnn.lsv.core.ui.ext.hide
 import com.muammarahlnn.lsv.core.ui.ext.readText
@@ -28,7 +27,7 @@ internal class HomeFragment : BaseFragment<ScreenHomeBinding, HomeViewModel, Hom
 
     private val adapter: ClassAdapter by lazy {
         ClassAdapter { enrolledClass ->
-            showMessage(enrolledClass.className)
+            requireActivity().getRootNavController().navigateToClassNavigator(enrolledClass.id)
         }
     }
 

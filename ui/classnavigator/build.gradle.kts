@@ -7,5 +7,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":ui:classfeed"))
+    implementation(project(":ui:classoverview"))
+    implementation(project(":ui:classmember"))
     implementation(libs.material)
 }

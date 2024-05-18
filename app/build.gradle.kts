@@ -45,6 +45,7 @@ dependencies {
     implementation(project(":ui:notifications"))
     implementation(project(":ui:pendingrequest"))
     implementation(project(":ui:changepassword"))
+    implementation(project(":ui:classnavigator"))
 
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="module">Module</string>
+    <string name="assignment">Assignment</string>
+    <string name="quiz">Quiz</string>
+</resources>
