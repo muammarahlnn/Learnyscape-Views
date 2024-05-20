@@ -3,4 +3,7 @@
     <string name="module">Module</string>
     <string name="assignment">Assignment</string>
     <string name="quiz">Quiz</string>
+    <string name="module_desc">Posted %1$s</string>
+    <string name="assignment_desc">Due %1$s</string>
+    <string name="quiz_desc">Start at %1$s</string>
 </resources>

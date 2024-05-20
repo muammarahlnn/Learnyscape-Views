@@ -1,7 +1,9 @@
 package com.muammarahlnn.lsv.data.base
 
 import kotlinx.datetime.LocalTime
+import java.time.Instant
 import java.time.LocalDateTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 /**
@@ -22,5 +24,13 @@ fun String.toStringDateFormatted(): String {
 
     val localDateTime = LocalDateTime.parse(this, isoFormatter)
     return localDateTime.format(displayFormatter)
+}
 
+fun formatEpochSeconds(epochSeconds: Long): String {
+    val displayFormatter = DateTimeFormatter.ofPattern(DISPLAY_FORMAT)
+    val localDateTime = LocalDateTime.ofInstant(
+        Instant.ofEpochMilli(epochSeconds),
+        ZoneId.systemDefault()
+    )
+    return localDateTime.format(displayFormatter)
 }

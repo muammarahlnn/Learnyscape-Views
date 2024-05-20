@@ -14,7 +14,7 @@
         android:padding="16dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivResource"
+            android:id="@+id/ivResourceType"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@color/red"
@@ -26,7 +26,7 @@
             app:shapeAppearanceOverlay="@style/CircleImageView" />
 
         <TextView
-            android:id="@+id/tvClassName"
+            android:id="@+id/tvName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -39,7 +39,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tvDesc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/ivResource"
+            app:layout_constraintStart_toEndOf="@+id/ivResourceType"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="Materi Networking" />
@@ -56,8 +56,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/ivResource"
-            app:layout_constraintTop_toBottomOf="@+id/tvClassName"
+            app:layout_constraintStart_toEndOf="@+id/ivResourceType"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
             tools:text="Due 18 May 2024, 23:59" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

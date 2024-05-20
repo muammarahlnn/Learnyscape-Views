@@ -1,6 +1,6 @@
 package com.muammarahlnn.lsv.ui.classoverview.di
 
-import com.muammarahlnn.lsv.ui.classoverview.ClassOverviewState
+import com.muammarahlnn.lsv.ui.classoverview.ClassOverviewUiState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object ClassOverviewModule {
 
     @Provides
-    fun providesState(): ClassOverviewState = ClassOverviewState()
+    fun providesState(): ClassOverviewUiState = ClassOverviewUiState.Loading(true)
 }
