@@ -1,6 +1,6 @@
 package com.muammarahlnn.lsv.ui.classmember.di
 
-import com.muammarahlnn.lsv.ui.classmember.ClassMemberState
+import com.muammarahlnn.lsv.ui.classmember.ClassMemberUiState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object ClassMemberModule {
 
     @Provides
-    fun providesState(): ClassMemberState = ClassMemberState()
+    fun providesState(): ClassMemberUiState = ClassMemberUiState.Loading(true)
 }

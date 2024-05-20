@@ -15,6 +15,7 @@ import com.muammarahlnn.lsv.core.navigation.CLASS_MEMBER_FULL_ROUTE
 import com.muammarahlnn.lsv.core.navigation.CLASS_OVERVIEW_FULL_ROUTE
 import com.muammarahlnn.lsv.core.navigation.ClassOverviewScreen
 import com.muammarahlnn.lsv.core.navigation.navigateToClassFeed
+import com.muammarahlnn.lsv.core.navigation.navigateToClassMember
 import com.muammarahlnn.lsv.core.navigation.navigateToClassOverview
 import com.muammarahlnn.lsv.core.ui.ext.readColor
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
@@ -93,7 +94,7 @@ internal class ClassNavigatorFragment :
                             navOptions = buildClassNavigatorNavOptions(CLASS_OVERVIEW_FULL_ROUTE),
                         )
 
-                        R.id.navigationMember -> navController.navigateToClassFeed(
+                        R.id.navigationMember -> navController.navigateToClassMember(
                             classId = classId,
                             navOptions = buildClassNavigatorNavOptions(CLASS_MEMBER_FULL_ROUTE),
                         )

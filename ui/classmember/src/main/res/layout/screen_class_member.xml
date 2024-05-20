@@ -12,8 +12,16 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <include
+        android:id="@+id/shimmerLoading"
+        layout="@layout/shimmer_class_member"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView"
+        android:id="@+id/lecturersCard"
         style="@style/BaseCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,16 +50,18 @@
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="3dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/white_light_gray"
                 app:layout_constraintTop_toBottomOf="@id/tvTeachers" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvLecturers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
                 android:paddingHorizontal="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/view"
                 tools:itemCount="2"
                 tools:listitem="@layout/item_class_member" />
@@ -61,13 +71,14 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/studentsCard"
         style="@style/BaseCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginHorizontal="16dp"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+        app:layout_constraintTop_toBottomOf="@+id/lecturersCard">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -90,16 +101,18 @@
             <View
                 android:id="@+id/view1"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="3dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/white_light_gray"
                 app:layout_constraintTop_toBottomOf="@id/tvStudents" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStudents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
                 android:paddingHorizontal="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/view1"
                 tools:itemCount="2"
                 tools:listitem="@layout/item_class_member" />

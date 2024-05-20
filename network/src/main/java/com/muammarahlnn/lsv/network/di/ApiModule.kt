@@ -3,6 +3,7 @@ package com.muammarahlnn.lsv.network.di
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.muammarahlnn.lsv.network.base.Server
 import com.muammarahlnn.lsv.network.changepassword.ChangePasswordApi
+import com.muammarahlnn.lsv.network.classmember.ClassMemberApi
 import com.muammarahlnn.lsv.network.classoverview.ClassOverviewApi
 import com.muammarahlnn.lsv.network.di.AuthQualifiers.BEARER_TOKEN
 import com.muammarahlnn.lsv.network.di.AuthQualifiers.DEFAULT
@@ -97,6 +98,13 @@ object ApiModule {
         networkJson: Json,
         @Auth(BEARER_TOKEN) client: OkHttpClient,
     ): ClassOverviewApi = buildRetrofit(networkJson, client).create(ClassOverviewApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesClassMemberApi(
+        networkJson: Json,
+        @Auth(BEARER_TOKEN) client: OkHttpClient,
+    ): ClassMemberApi = buildRetrofit(networkJson, client).create(ClassMemberApi::class.java)
 }
 
 private fun buildRetrofit(
