@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="announcement">Announcement</string>
+    <string name="iv_background_header_desc">Background header</string>
+    <string name="iv_groups_desc">Icon groups</string>
 </resources>
