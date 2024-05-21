@@ -25,4 +25,5 @@ dependencies {
     api(libs.androidx.navigation.ui)
     api(libs.kotlinx.coroutines.android)
     api(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.datetime)
 }

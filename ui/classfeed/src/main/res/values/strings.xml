@@ -3,4 +3,5 @@
     <string name="announcement">Announcement</string>
     <string name="iv_background_header_desc">Background header</string>
     <string name="iv_groups_desc">Icon groups</string>
+    <string name="class_time">%1$s, %2$s - %3$s</string>
 </resources>

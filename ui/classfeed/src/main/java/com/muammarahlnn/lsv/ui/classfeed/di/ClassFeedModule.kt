@@ -1,6 +1,6 @@
 package com.muammarahlnn.lsv.ui.classfeed.di
 
-import com.muammarahlnn.lsv.ui.classfeed.ClassFeedState
+import com.muammarahlnn.lsv.ui.classfeed.ClassFeedUiState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object ClassFeedModule {
 
     @Provides
-    fun providesState(): ClassFeedState = ClassFeedState()
+    fun providesState(): ClassFeedUiState = ClassFeedUiState.LoadingFetchDetails(true)
 }

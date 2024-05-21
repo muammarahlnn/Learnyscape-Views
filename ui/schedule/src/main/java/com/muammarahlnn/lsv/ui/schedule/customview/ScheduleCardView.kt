@@ -17,7 +17,9 @@ import com.muammarahlnn.lsv.core.model.ScheduleModel
 import com.muammarahlnn.lsv.core.ui.ext.dpToPx
 import com.muammarahlnn.lsv.core.ui.ext.readColor
 import com.muammarahlnn.lsv.core.ui.ext.readFont
-import kotlinx.datetime.LocalTime
+import com.muammarahlnn.lsv.core.ui.ext.readText
+import com.muammarahlnn.lsv.core.ui.util.toDisplayedTime
+import com.muammarahlnn.lsv.ui.schedule.R
 import com.muammarahlnn.lsv.core.ui.R as uiR
 
 /**
@@ -106,16 +108,10 @@ class ScheduleCardView @JvmOverloads constructor(
 
     private fun updateData() {
         tvClassName.text = schedule.className
-        tvClassTime.text = formatStartEndTime(
-            startTime = schedule.startTime,
-            endTime = schedule.endTime,
+        tvClassTime.text = context.readText(
+            R.string.schedule_time,
+            schedule.startTime.toDisplayedTime(),
+            schedule.endTime.toDisplayedTime()
         )
-    }
-
-    private fun formatStartEndTime(startTime: LocalTime, endTime: LocalTime): String {
-        val format = "%02d:%02d"
-        val formattedStartTime = String.format(format, startTime.hour, startTime.minute)
-        val formattedEndTime = String.format(format, endTime.hour, endTime.minute)
-        return "$formattedStartTime - $formattedEndTime"
     }
 }

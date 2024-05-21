@@ -10,6 +10,7 @@ import com.muammarahlnn.lsv.core.ui.ext.readText
 import com.muammarahlnn.lsv.core.ui.widget.viewholder.BaseViewHolder
 import com.muammarahlnn.lsv.ui.classoverview.R
 import com.muammarahlnn.lsv.ui.classoverview.databinding.ItemClassOverviewBinding
+import com.muammarahlnn.lsv.core.ui.R as uiR
 
 /**
  * @Author Muammar Ahlan Abimanyu
@@ -32,9 +33,9 @@ internal class ClassOverviewViewHolder(
             view.setImageDrawable(
                 context.readDrawable(
                     when (classOverviewScreen) {
-                        MODULE -> R.drawable.ic_book
-                        ASSIGNMENT -> R.drawable.ic_assignment
-                        QUIZ -> R.drawable.ic_quiz
+                        MODULE -> uiR.drawable.ic_book
+                        ASSIGNMENT -> uiR.drawable.ic_assignment
+                        QUIZ -> uiR.drawable.ic_quiz
                     }
                 )
             )

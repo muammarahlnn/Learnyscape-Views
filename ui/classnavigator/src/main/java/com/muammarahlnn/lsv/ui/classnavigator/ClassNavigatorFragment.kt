@@ -55,52 +55,56 @@ internal class ClassNavigatorFragment :
     private fun setupView() {
         setStatusBarColorToWhite()
 
-        val navController = requireActivity().findNavController(R.id.classNavHost)
-        navController.graph = navController.createGraph(
-            startDestination = CLASS_FEED_FULL_ROUTE
-        ) {
-            classFeedFragment()
-            moduleFragment()
-            assignmentFragment()
-            quizFragment()
-            classMemberFragment()
+        val classId = arguments?.getString(CLASS_ID_ARG) as String
+        val navController = requireActivity().findNavController(R.id.classNavHost).apply {
+            setGraph(
+                graph = navController.createGraph(
+                    startDestination = CLASS_FEED_FULL_ROUTE
+                ) {
+                    classFeedFragment()
+                    moduleFragment()
+                    assignmentFragment()
+                    quizFragment()
+                    classMemberFragment()
+                },
+                startDestinationArgs = Bundle().apply {
+                    putString(CLASS_ID_ARG, classId)
+                },
+            )
         }
 
-        val classId = arguments?.getString(CLASS_ID_ARG)
         viewBinding.classNavView.also { navView ->
-            classId?.let { classId ->
-                navView.setOnItemSelectedListener { item ->
-                    when (item.itemId) {
-                        R.id.navigationFeed -> navController.navigateToClassFeed(
-                            classId = classId,
-                            navOptions = buildClassNavigatorNavOptions(CLASS_FEED_FULL_ROUTE),
-                        )
+            navView.setOnItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.navigationFeed -> navController.navigateToClassFeed(
+                        classId = classId,
+                        navOptions = buildClassNavigatorNavOptions(CLASS_FEED_FULL_ROUTE),
+                    )
 
-                        R.id.navigationModule -> navController.navigateToClassOverview(
-                            classId = classId,
-                            overviewScreenOrdinal = ClassOverviewScreen.MODULE.ordinal,
-                            navOptions = buildClassNavigatorNavOptions(CLASS_OVERVIEW_FULL_ROUTE),
-                        )
+                    R.id.navigationModule -> navController.navigateToClassOverview(
+                        classId = classId,
+                        overviewScreenOrdinal = ClassOverviewScreen.MODULE.ordinal,
+                        navOptions = buildClassNavigatorNavOptions(CLASS_OVERVIEW_FULL_ROUTE),
+                    )
 
-                        R.id.navigationAssignment -> navController.navigateToClassOverview(
-                            classId = classId,
-                            overviewScreenOrdinal = ClassOverviewScreen.ASSIGNMENT.ordinal,
-                            navOptions = buildClassNavigatorNavOptions(CLASS_OVERVIEW_FULL_ROUTE),
-                        )
+                    R.id.navigationAssignment -> navController.navigateToClassOverview(
+                        classId = classId,
+                        overviewScreenOrdinal = ClassOverviewScreen.ASSIGNMENT.ordinal,
+                        navOptions = buildClassNavigatorNavOptions(CLASS_OVERVIEW_FULL_ROUTE),
+                    )
 
-                        R.id.navigationQuiz -> navController.navigateToClassOverview(
-                            classId = classId,
-                            overviewScreenOrdinal = ClassOverviewScreen.QUIZ.ordinal,
-                            navOptions = buildClassNavigatorNavOptions(CLASS_OVERVIEW_FULL_ROUTE),
-                        )
+                    R.id.navigationQuiz -> navController.navigateToClassOverview(
+                        classId = classId,
+                        overviewScreenOrdinal = ClassOverviewScreen.QUIZ.ordinal,
+                        navOptions = buildClassNavigatorNavOptions(CLASS_OVERVIEW_FULL_ROUTE),
+                    )
 
-                        R.id.navigationMember -> navController.navigateToClassMember(
-                            classId = classId,
-                            navOptions = buildClassNavigatorNavOptions(CLASS_MEMBER_FULL_ROUTE),
-                        )
-                    }
-                    true
+                    R.id.navigationMember -> navController.navigateToClassMember(
+                        classId = classId,
+                        navOptions = buildClassNavigatorNavOptions(CLASS_MEMBER_FULL_ROUTE),
+                    )
                 }
+                true
             }
         }
     }

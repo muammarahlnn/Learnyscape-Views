@@ -8,9 +8,9 @@ import androidx.core.content.res.ResourcesCompat
 import com.muammarahlnn.lsv.core.model.AvailableClassModel
 import com.muammarahlnn.lsv.core.ui.ext.hide
 import com.muammarahlnn.lsv.core.ui.ext.show
+import com.muammarahlnn.lsv.core.ui.util.toDisplayedTime
 import com.muammarahlnn.lsv.core.ui.widget.viewholder.BaseViewHolder
 import com.muammarahlnn.lsv.ui.discover.databinding.ItemAvailableClassBinding
-import kotlinx.datetime.LocalTime
 import com.muammarahlnn.lsv.core.ui.R as uiR
 
 
@@ -52,8 +52,8 @@ internal class AvailableClassViewHolder(
 
         viewBinding.tvSchedule.also { view ->
             val day = state.day.displayedText
-            val startTime = formatLocalTime(state.startTime)
-            val endTime = formatLocalTime(state.endTime)
+            val startTime = state.startTime.toDisplayedTime()
+            val endTime = state.endTime.toDisplayedTime()
             val scheduleText = "$day, $startTime - $endTime"
             view.text = scheduleText
         }
@@ -62,7 +62,4 @@ internal class AvailableClassViewHolder(
             if (state.isRequested()) view.show() else view.hide()
         }
     }
-
-    private fun formatLocalTime(time: LocalTime): String =
-        String.format("%02d:%02d", time.hour, time.minute)
 }

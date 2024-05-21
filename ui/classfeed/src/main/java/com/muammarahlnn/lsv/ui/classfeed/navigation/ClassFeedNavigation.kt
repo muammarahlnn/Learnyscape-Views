@@ -1,8 +1,10 @@
 package com.muammarahlnn.lsv.ui.classfeed.navigation
 
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavType
 import androidx.navigation.fragment.fragment
 import com.muammarahlnn.lsv.core.navigation.CLASS_FEED_FULL_ROUTE
+import com.muammarahlnn.lsv.core.navigation.CLASS_ID_ARG
 import com.muammarahlnn.lsv.ui.classfeed.ClassFeedFragment
 
 /**
@@ -12,5 +14,8 @@ import com.muammarahlnn.lsv.ui.classfeed.ClassFeedFragment
 fun NavGraphBuilder.classFeedFragment() {
     fragment<ClassFeedFragment>(CLASS_FEED_FULL_ROUTE) {
         label = "Class Feed"
+        argument(CLASS_ID_ARG) {
+            type = NavType.StringType
+        }
     }
 }

@@ -2,4 +2,5 @@
 <resources>
     <string name="schedule">Schedule</string>
     <string name="empty_schedules_desc">You have no schedule for today</string>
+    <string name="schedule_time">%1$s - %2$s</string>
 </resources>
