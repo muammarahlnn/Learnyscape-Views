@@ -45,6 +45,11 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="RoundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
     <style name="BaseCardView" parent="Widget.Material3.CardView.Elevated">
         <item name="elevation">2dp</item>
         <item name="strokeWidth">@null</item>
