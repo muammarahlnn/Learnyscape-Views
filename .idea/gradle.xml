@@ -48,6 +48,7 @@
             <option value="$PROJECT_DIR$/ui/notifications" />
             <option value="$PROJECT_DIR$/ui/pendingrequest" />
             <option value="$PROJECT_DIR$/ui/profile" />
+            <option value="$PROJECT_DIR$/ui/resourcedetails" />
             <option value="$PROJECT_DIR$/ui/schedule" />
           </set>
         </option>
