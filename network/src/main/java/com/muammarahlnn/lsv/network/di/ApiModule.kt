@@ -1,6 +1,7 @@
 package com.muammarahlnn.lsv.network.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.muammarahlnn.lsv.network.attachment.AttachmentApi
 import com.muammarahlnn.lsv.network.base.Server
 import com.muammarahlnn.lsv.network.changepassword.ChangePasswordApi
 import com.muammarahlnn.lsv.network.classfeed.ClassFeedApi
@@ -14,6 +15,7 @@ import com.muammarahlnn.lsv.network.login.LoginApi
 import com.muammarahlnn.lsv.network.notifications.NotificationsApi
 import com.muammarahlnn.lsv.network.pendingrequest.PendingRequestApi
 import com.muammarahlnn.lsv.network.profile.ProfileApi
+import com.muammarahlnn.lsv.network.resourcedetails.ResourceDetailsApi
 import com.muammarahlnn.lsv.network.schedule.ScheduleApi
 import dagger.Module
 import dagger.Provides
@@ -113,6 +115,20 @@ object ApiModule {
         networkJson: Json,
         @Auth(BEARER_TOKEN) client: OkHttpClient,
     ): ClassFeedApi = buildRetrofit(networkJson, client).create(ClassFeedApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesResourceDetailsApi(
+        networkJson: Json,
+        @Auth(BEARER_TOKEN) client: OkHttpClient,
+    ): ResourceDetailsApi = buildRetrofit(networkJson, client).create(ResourceDetailsApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesAttachmentApi(
+        networkJson: Json,
+        @Auth(BEARER_TOKEN) client: OkHttpClient,
+    ): AttachmentApi = buildRetrofit(networkJson, client).create(AttachmentApi::class.java)
 }
 
 private fun buildRetrofit(

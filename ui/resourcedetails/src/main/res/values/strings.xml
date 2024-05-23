@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="announcement">Announcement</string>
+    <string name="module">Module</string>
+    <string name="assignment">Assignment</string>
+    <string name="quiz">Quiz</string>
     <string name="attachments">Attachments</string>
+    <string name="details">Details</string>
+    <string name="interval_time_quiz_work">Interval time quiz work</string>
+    <string name="quiz_duration">Quiz duration</string>
+    <string name="quiz_type">Quiz type</string>
+    <string name="quiz_time">%1$s - %2$s</string>
+    <string name="multiple_choice">Multiple Choice Questions</string>
+    <string name="photo_answer">Photo Answer</string>
 </resources>

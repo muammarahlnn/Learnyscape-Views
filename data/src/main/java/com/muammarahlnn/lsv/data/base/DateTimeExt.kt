@@ -29,7 +29,7 @@ fun String.toStringDateFormatted(): String {
 fun formatEpochSeconds(epochSeconds: Long): String {
     val displayFormatter = DateTimeFormatter.ofPattern(DISPLAY_FORMAT)
     val localDateTime = LocalDateTime.ofInstant(
-        Instant.ofEpochMilli(epochSeconds),
+        Instant.ofEpochSecond(epochSeconds),
         ZoneId.systemDefault()
     )
     return localDateTime.format(displayFormatter)

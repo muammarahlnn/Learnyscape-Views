@@ -11,6 +11,7 @@ import com.muammarahlnn.lsv.core.model.ClassDetailsModel
 import com.muammarahlnn.lsv.core.model.ClassFeedModel
 import com.muammarahlnn.lsv.core.navigation.CLASS_ID_ARG
 import com.muammarahlnn.lsv.core.navigation.getRootNavController
+import com.muammarahlnn.lsv.core.navigation.navigateToResourceDetails
 import com.muammarahlnn.lsv.core.ui.ext.hide
 import com.muammarahlnn.lsv.core.ui.ext.readColor
 import com.muammarahlnn.lsv.core.ui.ext.readFont
@@ -35,7 +36,10 @@ internal class ClassFeedFragment :
 
     private val classFeedAdapter by lazy {
         ClassFeedAdapter { classFeed ->
-            showMessage(classFeed.name)
+            requireActivity().getRootNavController().navigateToResourceDetails(
+                resourceId = classFeed.uri,
+                resourceTypeOrdinal = classFeed.type.ordinal,
+            )
         }
     }
 

@@ -9,10 +9,11 @@ import com.muammarahlnn.lsv.core.navigation.LOGIN_ROUTE
 import com.muammarahlnn.lsv.databinding.ActivityMainBinding
 import com.muammarahlnn.lsv.domain.login.IsUserLoggedInUseCase
 import com.muammarahlnn.lsv.ui.changepassword.navigation.changePasswordFragment
-import com.muammarahlnn.lsv.ui.classnavigator.navigation.classNavigatorFragment
+import com.muammarahlnn.lsv.ui.classnavigator.navigation.classNavigatorFragmentt
 import com.muammarahlnn.lsv.ui.homenavigator.navigation.homeNavigatorFragment
 import com.muammarahlnn.lsv.ui.login.screen.navigation.loginFragment
 import com.muammarahlnn.lsv.ui.pendingrequest.navigation.pendingRequestFragment
+import com.muammarahlnn.lsv.ui.resourcedetails.navigation.resourceDetailsFragment
 import com.muammarahlnn.ui.lsv.notifications.navigation.notificationsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -49,7 +50,8 @@ class MainActivity : AppCompatActivity() {
             notificationsFragment()
             pendingRequestFragment()
             changePasswordFragment()
-            classNavigatorFragment()
+            classNavigatorFragmentt()
+            resourceDetailsFragment()
         }
     }
 }

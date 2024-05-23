@@ -1,6 +1,6 @@
 package com.muammarahlnn.lsv.ui.resourcedetails.di
 
-import com.muammarahlnn.lsv.ui.resourcedetails.ResourceDetailsState
+import com.muammarahlnn.lsv.ui.resourcedetails.ResourceDetailsUiState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object ResourceDetailsModule {
 
     @Provides
-    fun providesState(): ResourceDetailsState = ResourceDetailsState()
+    fun providesState(): ResourceDetailsUiState = ResourceDetailsUiState.LoadingFetchDetails(true)
 }

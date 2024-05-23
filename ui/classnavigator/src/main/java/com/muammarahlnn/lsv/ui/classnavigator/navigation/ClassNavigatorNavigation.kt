@@ -11,7 +11,7 @@ import com.muammarahlnn.lsv.ui.classnavigator.ClassNavigatorFragment
  * @Author Muammar Ahlan Abimanyu
  * @File ClassNavigatorNavigation, 11/05/2024 23.59
  */
-fun NavGraphBuilder.classNavigatorFragment() {
+fun NavGraphBuilder.classNavigatorFragmentt() {
     fragment<ClassNavigatorFragment>(CLASS_NAVIGATOR_FULL_ROUTE) {
         label = "Class Navigator"
         argument(CLASS_ID_ARG) {
