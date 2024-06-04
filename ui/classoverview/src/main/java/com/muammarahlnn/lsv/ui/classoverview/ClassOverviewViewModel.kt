@@ -6,10 +6,7 @@ import com.muammarahlnn.lsv.core.navigation.ClassOverviewScreen.ASSIGNMENT
 import com.muammarahlnn.lsv.core.navigation.ClassOverviewScreen.MODULE
 import com.muammarahlnn.lsv.core.navigation.ClassOverviewScreen.QUIZ
 import com.muammarahlnn.lsv.core.ui.viewmodel.BaseViewModel
-import com.muammarahlnn.lsv.domain.classoverview.GetAssignmentsUseCase
 import com.muammarahlnn.lsv.domain.classoverview.GetClassResourceOverviewsUseCase
-import com.muammarahlnn.lsv.domain.classoverview.GetModulesUseCase
-import com.muammarahlnn.lsv.domain.classoverview.GetQuizzesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -19,9 +16,6 @@ import javax.inject.Inject
  */
 @HiltViewModel
 internal class ClassOverviewViewModel @Inject constructor(
-    private val getModulesUseCase: GetModulesUseCase,
-    private val getAssignmentsUseCase: GetAssignmentsUseCase,
-    private val getQuizzesUseCase: GetQuizzesUseCase,
     private val getClassResourceOverviewsUseCase: GetClassResourceOverviewsUseCase,
     initialState: ClassOverviewUiState,
 ) : BaseViewModel<ClassOverviewUiState>(initialState) {

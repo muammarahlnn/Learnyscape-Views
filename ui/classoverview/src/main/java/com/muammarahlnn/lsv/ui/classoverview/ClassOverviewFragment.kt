@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.muammarahlnn.lsv.core.model.ClassResourceOverviewModel
+import com.muammarahlnn.lsv.core.model.ClassResourceTypeModel
 import com.muammarahlnn.lsv.core.navigation.CLASS_ID_ARG
 import com.muammarahlnn.lsv.core.navigation.ClassOverviewScreen.ASSIGNMENT
 import com.muammarahlnn.lsv.core.navigation.ClassOverviewScreen.MODULE
 import com.muammarahlnn.lsv.core.navigation.ClassOverviewScreen.QUIZ
 import com.muammarahlnn.lsv.core.navigation.OVERVIEW_SCREEN_ARG
 import com.muammarahlnn.lsv.core.navigation.getRootNavController
+import com.muammarahlnn.lsv.core.navigation.navigateToResourceDetails
 import com.muammarahlnn.lsv.core.ui.ext.hide
 import com.muammarahlnn.lsv.core.ui.ext.readText
 import com.muammarahlnn.lsv.core.ui.ext.show
@@ -31,7 +33,14 @@ internal class ClassOverviewFragment :
 
     private val adapter: ClassOverviewAdapter by lazy {
         ClassOverviewAdapter(viewModel.classOverviewScreen) { classResourceOverview ->
-            showMessage(classResourceOverview.name)
+            requireActivity().getRootNavController().navigateToResourceDetails(
+                resourceId = classResourceOverview.id,
+                resourceTypeOrdinal = when (viewModel.classOverviewScreen) {
+                    MODULE -> ClassResourceTypeModel.MODULE.ordinal
+                    ASSIGNMENT -> ClassResourceTypeModel.ASSIGNMENT.ordinal
+                    QUIZ -> ClassResourceTypeModel.QUIZ.ordinal
+                }
+            )
         }
     }
 
