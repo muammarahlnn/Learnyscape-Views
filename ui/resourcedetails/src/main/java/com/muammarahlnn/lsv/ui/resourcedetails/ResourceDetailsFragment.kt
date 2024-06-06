@@ -21,6 +21,7 @@ import com.muammarahlnn.lsv.core.ui.ext.readColor
 import com.muammarahlnn.lsv.core.ui.ext.readText
 import com.muammarahlnn.lsv.core.ui.ext.show
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
+import com.muammarahlnn.lsv.ui.assignmentsubmission.AssignmentSubmissionSheet
 import com.muammarahlnn.lsv.ui.resourcedetails.adapter.AttachmentAdapter
 import com.muammarahlnn.lsv.ui.resourcedetails.databinding.ScreenResourceDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -115,6 +116,10 @@ internal class ResourceDetailsFragment :
                 viewBinding.ivResourceType.setImageResource(uiR.drawable.ic_quiz_border)
             }
         }
+
+        if (viewModel.classResourceType == ASSIGNMENT) {
+            showAssignmentSubmissionSheet()
+        }
     }
 
     private fun setStatusBarColorToRed() {
@@ -176,6 +181,12 @@ internal class ResourceDetailsFragment :
                 }
             }
 
+        }
+    }
+
+    private fun showAssignmentSubmissionSheet() {
+        AssignmentSubmissionSheet().also { sheet ->
+            sheet.show(activity?.supportFragmentManager)
         }
     }
 }

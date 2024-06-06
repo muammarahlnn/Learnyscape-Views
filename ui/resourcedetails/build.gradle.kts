@@ -7,6 +7,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":ui:assignmentsubmission"))
     implementation(libs.material)
     implementation(libs.kotlinx.datetime)
 }

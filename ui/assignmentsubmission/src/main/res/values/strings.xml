@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_work">Add work</string>
+    <string name="your_work">Your work</string>
+    <string name="see_attachment">See 1 attachment</string>
+    <string name="see_attachments">See %1$s attachments</string>
+</resources>
