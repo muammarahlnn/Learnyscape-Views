@@ -4,4 +4,6 @@
     <string name="your_work">Your work</string>
     <string name="see_attachment">See 1 attachment</string>
     <string name="see_attachments">See %1$s attachments</string>
+    <string name="attachments">Attachments</string>
+    <string name="no_attachments_uploaded_desc">You have no attachments uploaded.\nLet\'s add it right away.</string>
 </resources>

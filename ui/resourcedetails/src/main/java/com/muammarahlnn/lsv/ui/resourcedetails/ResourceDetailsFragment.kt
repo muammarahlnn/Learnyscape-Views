@@ -2,9 +2,12 @@ package com.muammarahlnn.lsv.ui.resourcedetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.viewModels
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.muammarahlnn.lsv.core.model.ClassResourceTypeModel.ANNOUNCEMENT
 import com.muammarahlnn.lsv.core.model.ClassResourceTypeModel.ASSIGNMENT
 import com.muammarahlnn.lsv.core.model.ClassResourceTypeModel.MODULE
@@ -14,6 +17,7 @@ import com.muammarahlnn.lsv.core.model.QuizDetailsModel.QuizType.PHOTO_ANSWER
 import com.muammarahlnn.lsv.core.navigation.RESOURCE_ID_ARG
 import com.muammarahlnn.lsv.core.navigation.RESOURCE_TYPE_ORDINAL_ARG
 import com.muammarahlnn.lsv.core.navigation.getRootNavController
+import com.muammarahlnn.lsv.core.ui.ext.dpToPx
 import com.muammarahlnn.lsv.core.ui.ext.hide
 import com.muammarahlnn.lsv.core.ui.ext.invisible
 import com.muammarahlnn.lsv.core.ui.ext.openFile
@@ -21,7 +25,6 @@ import com.muammarahlnn.lsv.core.ui.ext.readColor
 import com.muammarahlnn.lsv.core.ui.ext.readText
 import com.muammarahlnn.lsv.core.ui.ext.show
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
-import com.muammarahlnn.lsv.ui.assignmentsubmission.AssignmentSubmissionSheet
 import com.muammarahlnn.lsv.ui.resourcedetails.adapter.AttachmentAdapter
 import com.muammarahlnn.lsv.ui.resourcedetails.databinding.ScreenResourceDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -117,9 +120,7 @@ internal class ResourceDetailsFragment :
             }
         }
 
-        if (viewModel.classResourceType == ASSIGNMENT) {
-            showAssignmentSubmissionSheet()
-        }
+        setupAssignmentSubmissionSheet()
     }
 
     private fun setStatusBarColorToRed() {
@@ -184,9 +185,41 @@ internal class ResourceDetailsFragment :
         }
     }
 
-    private fun showAssignmentSubmissionSheet() {
-        AssignmentSubmissionSheet().also { sheet ->
-            sheet.show(activity?.supportFragmentManager)
+    private fun setupAssignmentSubmissionSheet() {
+        viewBinding.assignmentSubmissionSheet.also { sheet ->
+            if (viewModel.classResourceType != ASSIGNMENT) {
+                sheet.root.hide()
+                return
+            }
+
+            val behavior = BottomSheetBehavior.from(sheet.root).apply {
+                addBottomSheetCallback(object : BottomSheetCallback() {
+                    override fun onStateChanged(bottomSheet: View, newState: Int) {
+                        when (newState) {
+                            BottomSheetBehavior.STATE_COLLAPSED -> {
+                                sheet.expandedContent.root.hide()
+                                sheet.llAttachments.show()
+                            }
+
+                            BottomSheetBehavior.STATE_EXPANDED -> {
+                                sheet.expandedContent.root.show()
+                                sheet.llAttachments.hide()
+                            }
+
+                            else -> Unit
+                        }
+                    }
+
+                    override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+                })
+
+                state = BottomSheetBehavior.STATE_COLLAPSED
+                peekHeight = requireContext().dpToPx(320)
+            }
+
+            sheet.tvYourWork.setOnClickListener {
+                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }
         }
     }
 }
