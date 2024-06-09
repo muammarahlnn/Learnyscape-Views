@@ -61,7 +61,7 @@ class AssignmentSubmissionSheet :
             })
 
             state = BottomSheetBehavior.STATE_COLLAPSED
-            peekHeight = requireContext().dpToPx(200)
+            peekHeight = requireContext().dpToPx(240)
         }
 
         viewBinding.llAttachments.setOnClickListener {
