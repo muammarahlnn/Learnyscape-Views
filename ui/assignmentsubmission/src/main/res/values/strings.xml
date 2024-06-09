@@ -6,4 +6,6 @@
     <string name="see_attachments">See %1$s attachments</string>
     <string name="attachments">Attachments</string>
     <string name="no_attachments_uploaded_desc">You have no attachments uploaded.\nLet\'s add it right away.</string>
+    <string name="delete_submission_attachment">Delete submission attachment</string>
+    <string name="save">Save</string>
 </resources>
