@@ -1,6 +1,7 @@
 package com.muammarahlnn.lsv.network.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.muammarahlnn.lsv.network.assignmentsubmission.AssignmentSubmissionApi
 import com.muammarahlnn.lsv.network.attachment.AttachmentApi
 import com.muammarahlnn.lsv.network.base.Server
 import com.muammarahlnn.lsv.network.changepassword.ChangePasswordApi
@@ -129,6 +130,13 @@ object ApiModule {
         networkJson: Json,
         @Auth(BEARER_TOKEN) client: OkHttpClient,
     ): AttachmentApi = buildRetrofit(networkJson, client).create(AttachmentApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesAssignmentSubmissionApi(
+        networkJson: Json,
+        @Auth(BEARER_TOKEN) client: OkHttpClient,
+    ): AssignmentSubmissionApi = buildRetrofit(networkJson, client).create(AssignmentSubmissionApi::class.java)
 }
 
 private fun buildRetrofit(
