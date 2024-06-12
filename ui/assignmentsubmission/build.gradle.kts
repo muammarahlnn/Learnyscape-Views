@@ -1,5 +1,6 @@
 plugins {
     id("lsv.android.ui")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -8,4 +9,6 @@ android {
 
 dependencies {
     implementation(libs.material)
+    implementation(libs.retrofit.core)
+    implementation(libs.kotlinx.serialization.json)
 }

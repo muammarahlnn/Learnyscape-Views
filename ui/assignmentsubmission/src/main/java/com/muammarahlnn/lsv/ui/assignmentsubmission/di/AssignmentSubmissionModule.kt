@@ -1,6 +1,6 @@
 package com.muammarahlnn.lsv.ui.assignmentsubmission.di
 
-import com.muammarahlnn.lsv.ui.assignmentsubmission.AssignmentSubmissionState
+import com.muammarahlnn.lsv.ui.assignmentsubmission.AssignmentSubmissionUiState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +16,6 @@ import dagger.hilt.android.components.ViewModelComponent
 object AssignmentSubmissionModule {
 
     @Provides
-    fun providesState(): AssignmentSubmissionState = AssignmentSubmissionState()
+    fun providesState(): AssignmentSubmissionUiState =
+        AssignmentSubmissionUiState.OnLoadingFetchStudentSubmission(true)
 }

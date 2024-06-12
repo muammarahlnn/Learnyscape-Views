@@ -200,13 +200,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
-        app:layout_behavior="@string/bottom_sheet_behavior"/>
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:behavior_peekHeight="200dp"/>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_gravity="bottom"
         android:background="@color/white">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/linearProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="4dp"
+            app:indicatorColor="@color/red"
+            app:trackCornerRadius="8dp"
+            app:trackThickness="2dp"
+            app:trackColor="@color/white"
+            android:indeterminate="true"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddWork"
@@ -219,7 +233,6 @@
             android:text="@string/add_work"
             app:cornerRadius="8dp"/>
 
-    </FrameLayout>
-
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

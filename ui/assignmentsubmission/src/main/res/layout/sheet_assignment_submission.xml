@@ -26,42 +26,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notchView" />
 
-    <LinearLayout
-        android:id="@+id/llAttachments"
+    <include
+        android:id="@+id/collapsedContent"
+        layout="@layout/collapsed_content"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="16dp"
-        android:background="@drawable/bg_see_attachments"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvYourWork">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/see_attachment"
-            android:src="@drawable/ic_attachment"
-            app:tint="@color/gray" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="@font/poppins_regular"
-            android:maxLines="1"
-            android:text="@string/see_attachment"
-            android:textColor="@color/blue" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/tvYourWork" />
 
     <include
         android:id="@+id/expandedContent"
-        android:visibility="gone"
         layout="@layout/expanded_content"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvYourWork" />

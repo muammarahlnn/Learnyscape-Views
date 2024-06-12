@@ -3,6 +3,7 @@ package com.muammarahlnn.lsv.ui.resourcedetails
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
@@ -24,6 +25,7 @@ import com.muammarahlnn.lsv.core.ui.ext.readText
 import com.muammarahlnn.lsv.core.ui.ext.show
 import com.muammarahlnn.lsv.core.ui.fragment.BaseFragment
 import com.muammarahlnn.lsv.ui.assignmentsubmission.AssignmentSubmissionSheet
+import com.muammarahlnn.lsv.ui.assignmentsubmission.listener.AssignmentSubmissionSheetListener
 import com.muammarahlnn.lsv.ui.resourcedetails.adapter.AttachmentAdapter
 import com.muammarahlnn.lsv.ui.resourcedetails.databinding.ScreenResourceDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -186,9 +188,39 @@ internal class ResourceDetailsFragment :
     }
 
     private fun setupAssignmentSubmissionSheet() {
-        parentFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<AssignmentSubmissionSheet>(R.id.assignmentSubmissionSheetContainer)
+        val bundle = bundleOf(
+            AssignmentSubmissionSheet.ASSIGNMENT_ID_ARG to viewModel.resourceId,
+        )
+
+        parentFragmentManager.apply {
+            commit {
+                setReorderingAllowed(true)
+                add<AssignmentSubmissionSheet>(
+                    containerViewId = R.id.assignmentSubmissionSheetContainer,
+                    args = bundle,
+                )
+            }
+
+            addFragmentOnAttachListener { _, fragment ->
+                if (fragment is AssignmentSubmissionSheet) {
+                    fragment.setAssignmentSubmissionSheetListener(createAssignmentSubmissionSheetListener())
+                }
+            }
         }
     }
+
+    private fun createAssignmentSubmissionSheetListener(): AssignmentSubmissionSheetListener =
+        object : AssignmentSubmissionSheetListener {
+            override fun onLoading(loading: Boolean) {
+                if (loading) {
+                    viewBinding.linearProgressBar.show()
+                } else {
+                    viewBinding.linearProgressBar.hide()
+                }
+            }
+
+            override fun onSetActionButtonText(text: String) {
+                viewBinding.btnAddWork.text = text
+            }
+        }
 }
